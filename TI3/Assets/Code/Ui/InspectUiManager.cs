@@ -56,11 +56,11 @@ public class InspectUiManager : MonoBehaviour
     {
         if (!inspactive)
         {
-            await DoSize.DOScale(1.2f, tweendur).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
+            await DoSize.DOScale(1.2f, tweendur).SetEase(Ease.OutCubic).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
         }
         else if (inspactive)
         {
-            await DoSize.DOScale(1f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
+            await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
         }
     }
 }
