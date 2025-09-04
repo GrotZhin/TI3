@@ -30,4 +30,11 @@ public class PlayerMove : MonoBehaviour
     {
         controller.SimpleMove(moveInput * speed);
     }
+     void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.tag == "Plate")
+        {
+            Debug.Log("funfu");
+        }
+    }
 }
