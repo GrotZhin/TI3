@@ -20,28 +20,27 @@ public class InspectUiManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!inspactive)
-            {
-                gp.DOFade(1, 0.2f).SetEase(Ease.OutFlash);
-                inspCanvas.SetActive(true);
-                await ScaleAni();
-                inspactive = true;
-            }
-            else if (inspactive)
-            {
-                 await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
-                 gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
-                inspCanvas.SetActive(false);
-                await ScaleAni();
-                inspactive = false;
-            }
+            OpenMenu();
         }
-
-        
-
-
     }
-
+    public async void OpenMenu()
+    {
+        if (!inspactive)
+        {
+            gp.DOFade(1, 0.2f).SetEase(Ease.OutFlash);
+            inspCanvas.SetActive(true);
+            await ScaleAni();
+            inspactive = true;
+        }
+        else if (inspactive)
+        {
+            await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
+            gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
+            inspCanvas.SetActive(false);
+            await ScaleAni();
+            inspactive = false;
+        }
+    }
     public async void Back()
     {
         await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
