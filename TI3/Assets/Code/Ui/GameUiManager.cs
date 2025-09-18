@@ -7,6 +7,7 @@ public class GameUiManager : MonoBehaviour
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
+    
     [SerializeField] RectTransform Sunicon;
     [SerializeField] RectTransform Moonicon;
     public float UpTopPosY, UpmiddlePosY;

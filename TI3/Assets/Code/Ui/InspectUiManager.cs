@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 public class InspectUiManager : MonoBehaviour
 {
     public GameObject inspCanvas;
-    
+    public GameObject MainUi;
     public CanvasGroup gp;
     bool inspactive = false;
     public Transform DoSize;
@@ -27,6 +27,7 @@ public class InspectUiManager : MonoBehaviour
     {
         if (!inspactive)
         {
+            MainUi.SetActive(false);
             gp.DOFade(1, 0.2f).SetEase(Ease.OutFlash);
             inspCanvas.SetActive(true);
             await ScaleAni();
@@ -34,6 +35,7 @@ public class InspectUiManager : MonoBehaviour
         }
         else if (inspactive)
         {
+            MainUi.SetActive(true);
             await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
             gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
             inspCanvas.SetActive(false);
@@ -43,11 +45,13 @@ public class InspectUiManager : MonoBehaviour
     }
     public async void Back()
     {
+
         await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
-                 gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
+        gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
         inspCanvas.SetActive(false);
-                await ScaleAni();
-                inspactive = false;
+        await ScaleAni();
+        MainUi.SetActive(true);
+        inspactive = false;
     }
     
     

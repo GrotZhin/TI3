@@ -26045,6 +26045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inspCanvas: {fileID: 476073549}
+  MainUi: {fileID: 378696082}
   gp: {fileID: 476073551}
   DoSize: {fileID: 855113516}
   tweendur: 0.3
