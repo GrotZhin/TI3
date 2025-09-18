@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        controller.SimpleMove(moveInput * speed);
+        controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
     }
      void OnControllerColliderHit(ControllerColliderHit hit)
     {
