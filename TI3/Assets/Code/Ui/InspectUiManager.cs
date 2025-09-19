@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using TMPro;
 public class InspectUiManager : MonoBehaviour
 {
     public GameObject inspCanvas;
@@ -9,6 +10,14 @@ public class InspectUiManager : MonoBehaviour
     bool inspactive = false;
     public Transform DoSize;
     public float tweendur = 0.8f;
+
+    [Header("Relativos aos coletaveis")]
+
+    public GameObject rockMetalTextUI;
+    public GameObject informativeHeaderUI;
+    public GameObject informativeBodyUI;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -43,6 +52,16 @@ public class InspectUiManager : MonoBehaviour
             inspactive = false;
         }
     }
+
+    // necessario pra mudar o texto
+    public void SetTexts(string rock, string header, string body)
+    {
+        rockMetalTextUI.GetComponent<TMP_Text>().text = rock;
+        informativeHeaderUI.GetComponent<TMP_Text>().text = header;
+        informativeBodyUI.GetComponent<TMP_Text>().text = body;
+    }
+
+
     public async void Back()
     {
 
@@ -52,6 +71,9 @@ public class InspectUiManager : MonoBehaviour
         await ScaleAni();
         MainUi.SetActive(true);
         inspactive = false;
+
+        //necessario pra travar e nao ativar outro trigger do coletavel
+        GetColectable.ReleaseInspect();
     }
     
     

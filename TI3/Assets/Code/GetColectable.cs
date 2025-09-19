@@ -1,57 +1,46 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class GetColectable : MonoBehaviour
 {
-    [Header("Configurações do Coletável")]
-    [SerializeField] private GameObject inspectItensCanvas;
-    [SerializeField] private GameObject childToActivate;
-    [SerializeField] private GameObject inspectToActivate;
-    [SerializeField] private GameObject[] alwaysActive;
+    [Header("Textos do Item")]
+    [TextArea] public string rockMetalText;
+    [TextArea] public string informativeHeader;
+    [TextArea] public string informativeBody;
+
+    private static bool inspectActive = false;
+    private static PlayerMove cachedPlayerMovement;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        if (inspectActive) return;
+
+        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+
+        if (manage != null)
         {
-            InspectUiManager manage = FindObjectOfType<InspectUiManager>();
-            if (manage != null)
-            {
-                manage.OpenMenu();
-            }
+            manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
 
-            if (inspectItensCanvas != null)
-            {
-                inspectItensCanvas.SetActive(true);
+            manage.OpenMenu();
+            inspectActive = true;
 
-                foreach (Transform child in inspectItensCanvas.transform)
-                {
-                    if (!IsAlwaysActive(child.gameObject))
-                    {
-                        child.gameObject.SetActive(false);
-                    }
-                }
+            cachedPlayerMovement = other.GetComponent<PlayerMove>();
 
-                if (childToActivate != null)
-                {
-                    childToActivate.SetActive(true);
-                }
-
-                if (inspectToActivate != null)
-                {
-                    inspectToActivate.SetActive(true);
-                }
-            }
-
-            Destroy(gameObject);
+            if (cachedPlayerMovement != null)
+                cachedPlayerMovement.enabled = false;
         }
+
+        Destroy(gameObject);
     }
 
-    private bool IsAlwaysActive(GameObject obj)
+    public static void ReleaseInspect()
     {
-        foreach (var go in alwaysActive)
-        {
-            if (go == obj)
-                return true;
-        }
-        return false;
+        inspectActive = false;
+
+        if (cachedPlayerMovement != null)
+            cachedPlayerMovement.enabled = true;
+
+        cachedPlayerMovement = null;
     }
 }
