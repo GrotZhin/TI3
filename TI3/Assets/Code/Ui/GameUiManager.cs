@@ -55,8 +55,8 @@ public class GameUiManager : MonoBehaviour
     async void SunAni()
     {
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
-        Sunicon.DORotate(new Vector2(360, 0), TweenDur, RotateMode.FastBeyond360);
-        Moonicon.DORotate(new Vector2(360, 0), TweenDur, RotateMode.FastBeyond360);
+        Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
+        Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => DayTimeFilter.SetColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
         await Moonicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
@@ -64,8 +64,8 @@ public class GameUiManager : MonoBehaviour
     async void MoonAni()
     {
         Moonicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
-        Sunicon.DORotate(new Vector2(360, 0), TweenDur, RotateMode.FastBeyond360);
-        Moonicon.DORotate(new Vector2(360, 0), TweenDur, RotateMode.FastBeyond360);
+        Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
+        Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => DayTimeFilter.SetColor("_ColorPallete", x), Night, TweenDur).SetUpdate(true);
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
 using TMPro;
+using Sfx;
 public class InspectUiManager : MonoBehaviour
 {
     public GameObject inspCanvas;
@@ -44,8 +45,9 @@ public class InspectUiManager : MonoBehaviour
         }
         else if (inspactive)
         {
-            MainUi.SetActive(true);
+            
             await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
+            MainUi.SetActive(true);
             gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
             inspCanvas.SetActive(false);
             await ScaleAni();
@@ -81,6 +83,7 @@ public class InspectUiManager : MonoBehaviour
     {
         if (!inspactive)
         {
+            soundManager.PlaySound(SoundType.AmethystPopUp);
             await DoSize.DOScale(1.2f, tweendur).SetEase(Ease.OutCubic).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
         }
         else if (inspactive)

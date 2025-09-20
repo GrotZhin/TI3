@@ -111,11 +111,11 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Fullscreen_AlphaBlendOperation: 0
-    - _Fullscreen_BlendMode: 4
+    - _Fullscreen_BlendMode: 5
     - _Fullscreen_ColorBlendOperation: 0
     - _Fullscreen_DepthWrite: 0
     - _Fullscreen_DstAlphaBlend: 10
-    - _Fullscreen_DstColorBlend: 0
+    - _Fullscreen_DstColorBlend: 8
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 2
     - _GlossMapScale: 0
