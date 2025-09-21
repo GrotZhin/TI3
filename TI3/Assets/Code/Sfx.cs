@@ -11,6 +11,7 @@ namespace Sfx
     {
         AmethystPopUp,
         Sparkles,
+        Menu,
 
     }
 

@@ -1,3 +1,4 @@
+using Sfx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,8 +6,10 @@ public class MainMenu : MonoBehaviour
 {
     float sounds = 1.0f;
     float music = 1.0f;
+     
     [SerializeField] Slider soundSlider;
     [SerializeField] Slider musicSlider;
+    [SerializeField] GameObject optionMenu;
     void Start()
     {
         sounds = PlayerPrefs.GetFloat("Sounds", 1.0f);
@@ -17,7 +20,14 @@ public class MainMenu : MonoBehaviour
     public void PlayGame(string sceneName)
     {
         // Load the specified game scene
+        soundManager.PlaySound(SoundType.Menu);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+    public void OpenMenu()
+    {
+        optionMenu.SetActive(true);
+        soundManager.PlaySound(SoundType.Menu);
+        
     }
     public void QuitGame()
     {

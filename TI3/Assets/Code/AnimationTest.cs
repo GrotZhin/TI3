@@ -59,6 +59,7 @@ public class AnimationTest : MonoBehaviour
                 Material materialAtual = meshRenderer.material;
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
+                    identifier.SetActive(true);
                     counter.i--;
                     Debug.Log("i: " + counter.i);
                 }
