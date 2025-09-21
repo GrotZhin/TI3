@@ -4,6 +4,10 @@ using UnityEngine;
 public class Push : MonoBehaviour
 {
     [SerializeField] float power;
+ 
+    public int i = 0;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,12 +24,17 @@ public class Push : MonoBehaviour
         if (hit.collider.CompareTag("Push"))
         {
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+
+          
+              
+            
             if (rb != null)
             {
+               
                 Vector3 direction = hit.gameObject.transform.position - this.transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                rb.AddForceAtPosition(direction*power, transform.position, ForceMode.Impulse);
+                rb.AddForceAtPosition(direction * power, transform.position, ForceMode.Impulse);
             }
         }
     }
