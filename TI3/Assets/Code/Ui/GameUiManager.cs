@@ -5,6 +5,7 @@ using UnityEngine.Splines.ExtrusionShapes;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
+    public CanvasGroup PGroup;
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
@@ -62,12 +63,15 @@ public class GameUiManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PMenu.SetActive(true);
+            
             PauseMenuani();
+            Time.timeScale = 0;
             
         }
     }
     public void PauseMenuani()
     {
+        PGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         Bg.DOAnchorPosX(UpmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B2.DOAnchorPosX(439.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -76,10 +80,14 @@ public class GameUiManager : MonoBehaviour
     }
     public async void Back()
     {
-        B1.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
-        B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
-        B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
-        await Bg.DOAnchorPosX(UpTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
+        Time.timeScale = 1;
+        Bg.DOAnchorPosX(UpTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        B1.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true);
+        B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
+        B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
+        await PGroup.DOFade(0, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
+        
+        
         
         PMenu.SetActive(false);
         
