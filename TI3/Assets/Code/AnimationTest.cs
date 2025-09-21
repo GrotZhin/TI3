@@ -7,6 +7,7 @@ public class AnimationTest : MonoBehaviour
     OpenGate openGate;
     MeshRenderer renderer;
     Material materialPlaca;
+    [SerializeField] GameObject identifier;
     Push counter;
 
 
@@ -38,6 +39,7 @@ public class AnimationTest : MonoBehaviour
                 Material materialAtual = meshRenderer.material;
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
+                    identifier.SetActive(false);
                     counter.i++;
                     Debug.Log("i: " + counter.i);
                 }
