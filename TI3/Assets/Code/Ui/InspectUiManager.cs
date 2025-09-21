@@ -28,10 +28,10 @@ public class InspectUiManager : MonoBehaviour
     // Update is called once per frame
     async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OpenMenu();
-        }
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     OpenMenu();
+        // }
     }
     public async void OpenMenu()
     {

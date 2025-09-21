@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine.Splines.ExtrusionShapes;
 public class GameUiManager : MonoBehaviour
 {
+    public GameObject PMenu;
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
@@ -15,6 +16,12 @@ public class GameUiManager : MonoBehaviour
     public float DNCooldown;
     float DNTimer;
     public bool DayTime;
+    //pause menu ani
+    [SerializeField] RectTransform Bg;
+    [SerializeField] RectTransform B1;
+    [SerializeField] RectTransform B2;
+    [SerializeField] RectTransform B3;
+    public float BtTopPosx=-555;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +32,7 @@ public class GameUiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (DNTimer > 0)
         {
             DNTimer -= Time.deltaTime;
@@ -38,19 +45,44 @@ public class GameUiManager : MonoBehaviour
 
                 if (DayTime)
                 {
-                    
-                    
+
+
                     SunAni();
                     DayTime = false;
                 }
                 else
                 {
-                     
+
                     MoonAni();
                     DayTime = true;
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PMenu.SetActive(true);
+            PauseMenuani();
+            
+        }
+    }
+    public void PauseMenuani()
+    {
+        Bg.DOAnchorPosX(UpmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        B2.DOAnchorPosX(439.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        B3.DOAnchorPosX(518.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        
+    }
+    public async void Back()
+    {
+        B1.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        await Bg.DOAnchorPosX(UpTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
+        
+        PMenu.SetActive(false);
+        
     }
     async void SunAni()
     {
