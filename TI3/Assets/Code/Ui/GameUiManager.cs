@@ -12,6 +12,7 @@ public class GameUiManager : MonoBehaviour
     
     [SerializeField] RectTransform Sunicon;
     [SerializeField] RectTransform Moonicon;
+    public float BgTopPosY, BgmiddlePosY;
     public float UpTopPosY, UpmiddlePosY;
     public float TweenDur;
     public float DNCooldown;
@@ -72,7 +73,7 @@ public class GameUiManager : MonoBehaviour
     public void PauseMenuani()
     {
         PGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
-        Bg.DOAnchorPosX(UpmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        Bg.DOAnchorPosX(BgmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B2.DOAnchorPosX(439.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B3.DOAnchorPosX(518.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -81,7 +82,7 @@ public class GameUiManager : MonoBehaviour
     public async void Back()
     {
         Time.timeScale = 1;
-        Bg.DOAnchorPosX(UpTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        Bg.DOAnchorPosX(BgTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
         B1.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true);
         B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);

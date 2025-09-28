@@ -11537,7 +11537,9 @@ MonoBehaviour:
   Night: {r: 0.4509804, g: 0.49411765, b: 0.54901963, a: 0}
   Sunicon: {fileID: 234967337}
   Moonicon: {fileID: 2131251852}
-  UpTopPosY: -480
+  BgTopPosY: -480
+  BgmiddlePosY: -140
+  UpTopPosY: 200
   UpmiddlePosY: -140
   TweenDur: 1
   DNCooldown: 1
@@ -83324,6 +83326,7 @@ GameObject:
   - component: {fileID: 2053327885}
   - component: {fileID: 2053327887}
   - component: {fileID: 2053327886}
+  - component: {fileID: 2053327888}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -83388,6 +83391,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053327884}
   m_CullTransparentMesh: 1
+--- !u!114 &2053327888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053327884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96220b5dd557774fa3eea26b6f6f2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2060091854
 GameObject:
   m_ObjectHideFlags: 0
