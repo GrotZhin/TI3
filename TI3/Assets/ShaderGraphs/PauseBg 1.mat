@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: PauseBg 1
   m_Shader: {fileID: -6465566751694194690, guid: 0af6890276ce6aa4cadaa654b3993286, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -77,12 +77,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_17688c78722e41279ca0e63957bc85e2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d20ce8763f37b3446af4c9605ec52e11, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: ae1bfa5c85a1dc6458547edd4970a55c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -139,13 +143,13 @@ Material:
     - _UIMaskSoftnessY: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _noiser: -1.56
-    - _spd: 1.48
-    - _stgt: 13.03
+    - _noiser: -1.32
+    - _spd: 0.05
+    - _stgt: 12.77
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.11698109, g: 0.11698109, b: 0.11698109, a: 0}
+    - _Color: {r: 0.06415099, g: 0.06415099, b: 0.06415099, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _center: {r: 2.51, g: 0.41, b: 0, a: 0}

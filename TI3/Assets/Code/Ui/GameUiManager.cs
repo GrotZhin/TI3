@@ -5,7 +5,10 @@ using UnityEngine.Splines.ExtrusionShapes;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
+    
+    public GameObject OMenu;
     public CanvasGroup PGroup;
+    public CanvasGroup OGroup;
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
@@ -17,13 +20,21 @@ public class GameUiManager : MonoBehaviour
     public float TweenDur;
     public float DNCooldown;
     float DNTimer;
+
+    public float BlockerCooldown;
+    float BlockerTimer;
+    [SerializeField] RectTransform Blocker;
     public bool DayTime;
     //pause menu ani
     [SerializeField] RectTransform Bg;
     [SerializeField] RectTransform B1;
     [SerializeField] RectTransform B2;
     [SerializeField] RectTransform B3;
-    public float BtTopPosx=-555;
+    //Options Menu Ani
+    [SerializeField] RectTransform BgOptions;
+     [SerializeField] RectTransform BC;
+    [SerializeField] RectTransform BV;
+    public float BtTopPosx = -555;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -70,29 +81,73 @@ public class GameUiManager : MonoBehaviour
             
         }
     }
+    public void BlockerDo()
+    {
+        Blocker.DOAnchorPosX(410.2825f, 0.1f).SetUpdate(true)
+        .SetAutoKill(false) // Prevent auto-kill
+            .OnComplete(async () => 
+            {
+                await Blocker.DOScale(2, 0.8f).SetUpdate(true).AsyncWaitForCompletion();
+                Blocker.DOAnchorPosX(99999, 0.1f).SetUpdate(true);
+            });
+    }
     public void PauseMenuani()
     {
+        BlockerDo();
         PGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         Bg.DOAnchorPosX(BgmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B2.DOAnchorPosX(439.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B3.DOAnchorPosX(518.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
-        
+
     }
-    public async void Back()
+    public void Back()
     {
         Time.timeScale = 1;
+        
+    }
+    public async void BackAni()
+    {
+        BlockerDo();
         Bg.DOAnchorPosX(BgTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
         B1.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true);
         B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         await PGroup.DOFade(0, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
-        
-        
-        
+
+
+
         PMenu.SetActive(false);
-        
+
     }
+    public void OptionsMenuani()
+    {
+        BlockerDo();
+        OMenu.SetActive(true);
+        OGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        BgOptions.DOAnchorPosX(400, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+
+        BC.DOAnchorPosX(439.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+        BV.DOAnchorPosX(518.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
+
+    }
+    
+    public async void Back2Menu()
+    {
+        BlockerDo();
+        PMenu.SetActive(true);
+        BgOptions.DOAnchorPosX(BgTopPosY, TweenDur).SetEase(Ease.InFlash).SetUpdate(true);
+        BC.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
+        BV.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
+        await OGroup.DOFade(0, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
+
+
+
+        OMenu.SetActive(false);
+
+
+    }
+    
     async void SunAni()
     {
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
