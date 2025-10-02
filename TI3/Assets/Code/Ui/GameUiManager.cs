@@ -24,7 +24,7 @@ public class GameUiManager : MonoBehaviour
     public float BlockerCooldown;
     float BlockerTimer;
     [SerializeField] RectTransform Blocker;
-    public bool DayTime;
+    public static bool DayTime;
     //pause menu ani
     [SerializeField] RectTransform Bg;
     [SerializeField] RectTransform B1;
@@ -94,6 +94,7 @@ public class GameUiManager : MonoBehaviour
     public void PauseMenuani()
     {
         BlockerDo();
+        
         PGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         Bg.DOAnchorPosX(BgmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
