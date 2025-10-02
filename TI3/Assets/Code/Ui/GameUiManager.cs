@@ -39,7 +39,7 @@ public class GameUiManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
+    Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
     }
 
     // Update is called once per frame
@@ -84,7 +84,7 @@ public class GameUiManager : MonoBehaviour
     public void BlockerDo()
     {
         Blocker.DOAnchorPosX(410.2825f, 0.1f).SetUpdate(true)
-        .SetAutoKill(false) // Prevent auto-kill
+        .SetAutoKill(false) 
             .OnComplete(async () => 
             {
                 await Blocker.DOScale(2, 0.8f).SetUpdate(true).AsyncWaitForCompletion();
@@ -154,7 +154,7 @@ public class GameUiManager : MonoBehaviour
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
+        Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         await Moonicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
 
@@ -163,7 +163,7 @@ public class GameUiManager : MonoBehaviour
         Moonicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Night, TweenDur).SetUpdate(true);
+        Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Night, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
 }
