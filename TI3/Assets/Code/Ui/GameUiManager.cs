@@ -39,7 +39,7 @@ public class GameUiManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => DayTimeFilter.SetColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
+        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
     }
 
     // Update is called once per frame
@@ -154,7 +154,7 @@ public class GameUiManager : MonoBehaviour
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => DayTimeFilter.SetColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
+        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Day, TweenDur).SetUpdate(true);
         await Moonicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
 
@@ -163,7 +163,7 @@ public class GameUiManager : MonoBehaviour
         Moonicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => DayTimeFilter.SetColor("_ColorPallete", x), Night, TweenDur).SetUpdate(true);
+        DOTween.To(() => DayTimeFilter.GetColor("_ColorPallete"), x => Shader.SetGlobalColor("_ColorPallete", x), Night, TweenDur).SetUpdate(true);
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
 }
