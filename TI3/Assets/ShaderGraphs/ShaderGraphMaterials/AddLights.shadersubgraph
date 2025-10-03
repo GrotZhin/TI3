@@ -760,7 +760,7 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "AdditionalLight",
-    "m_FunctionSource": "8d3ba502d252b2d4e97d036a36c7b1cb",
+    "m_FunctionSource": "d963e1a4dea892a4ba21aaa6124cfc1b",
     "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
