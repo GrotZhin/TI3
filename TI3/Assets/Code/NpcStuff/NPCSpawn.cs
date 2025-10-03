@@ -1,9 +1,12 @@
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class NPCSpawn : MonoBehaviour
 {
     public GameObject NPC;
     public GameObject Rock;
+    
     void Start()
     {
         
@@ -14,6 +17,7 @@ public class NPCSpawn : MonoBehaviour
     {
         if (GameUiManager.DayTime)
         {
+            
             NPC.SetActive(true);
             Rock.SetActive(false);
         }
