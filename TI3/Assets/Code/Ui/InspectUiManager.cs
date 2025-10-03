@@ -26,18 +26,16 @@ public class InspectUiManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    async void Update()
-    {
-       
-    }
+    
     public async void OpenMenu()
     {
         if (!inspactive)
         {
             MainUi.SetActive(false);
+            ScaleAni();
             gp.DOFade(1, 0.2f).SetEase(Ease.OutFlash);
             inspCanvas.SetActive(true);
-            await ScaleAni();
+            
             inspactive = true;
         }
         else if (inspactive)
@@ -47,7 +45,7 @@ public class InspectUiManager : MonoBehaviour
             MainUi.SetActive(true);
             gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
             inspCanvas.SetActive(false);
-            await ScaleAni();
+            ScaleAni();
             inspactive = false;
         }
     }
@@ -67,16 +65,16 @@ public class InspectUiManager : MonoBehaviour
         await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
         gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
         inspCanvas.SetActive(false);
-        await ScaleAni();
+        ScaleAni();
         MainUi.SetActive(true);
         inspactive = false;
 
         //necessario pra travar e nao ativar outro trigger do coletavel
-        GetColectable.ReleaseInspect();
+       // GetColectable.ReleaseInspect();
     }
     
     
-    public async Task ScaleAni()
+    public async void ScaleAni()
     {
         if (!inspactive)
         {
