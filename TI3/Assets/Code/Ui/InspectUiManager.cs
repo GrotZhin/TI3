@@ -3,14 +3,18 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using TMPro;
 using Sfx;
+using System;
 public class InspectUiManager : MonoBehaviour
 {
+
     public GameObject inspCanvas;
     public GameObject MainUi;
     public CanvasGroup gp;
     bool inspactive = false;
     public Transform DoSize;
     public float tweendur = 0.8f;
+
+    public event Action OnInspectClosed;
 
     [Header("Relativos aos coletaveis")]
 
@@ -47,6 +51,8 @@ public class InspectUiManager : MonoBehaviour
             inspCanvas.SetActive(false);
             ScaleAni();
             inspactive = false;
+
+            OnInspectClosed?.Invoke();
         }
     }
 
@@ -61,7 +67,6 @@ public class InspectUiManager : MonoBehaviour
 
     public async void Back()
     {
-
         await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
         gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
         inspCanvas.SetActive(false);
@@ -69,11 +74,11 @@ public class InspectUiManager : MonoBehaviour
         MainUi.SetActive(true);
         inspactive = false;
 
-        //necessario pra travar e nao ativar outro trigger do coletavel
-       // GetColectable.ReleaseInspect();
+        InspectRocks.ReleaseInspect();
+        OnInspectClosed?.Invoke();
     }
-    
-    
+
+
     public async void ScaleAni()
     {
         if (!inspactive)
