@@ -8,6 +8,8 @@ TagManager:
   - Walls
   - Push
   - OpenGate
+  - Cam
+  - MainC
   layers:
   - Default
   - TransparentFX
