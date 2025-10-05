@@ -17,12 +17,14 @@ public class InspectUiManager : MonoBehaviour
     public GameObject rockMetalTextUI;
     public GameObject informativeHeaderUI;
     public GameObject informativeBodyUI;
+    GetColectable getColectable;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         inspCanvas.SetActive(false);
+        getColectable =  new GetColectable();
     }
 
     // Update is called once per frame
@@ -70,8 +72,9 @@ public class InspectUiManager : MonoBehaviour
         inspactive = false;
 
         //necessario pra travar e nao ativar outro trigger do coletavel
-       // GetColectable.ReleaseInspect();
+       
     }
+   
     
     
     public async void ScaleAni()

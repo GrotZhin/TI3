@@ -25,9 +25,6 @@ public class Push : MonoBehaviour
         {
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
 
-          
-              
-            
             if (rb != null)
             {
                

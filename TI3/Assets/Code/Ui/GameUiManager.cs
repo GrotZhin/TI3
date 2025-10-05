@@ -36,6 +36,7 @@ public class GameUiManager : MonoBehaviour
     [SerializeField] RectTransform BV;
     public float BtTopPosx = -555;
     
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -105,7 +106,7 @@ public class GameUiManager : MonoBehaviour
     public void Back()
     {
         Time.timeScale = 1;
-        
+        GetColectable.ReleaseInspect();
     }
     public async void BackAni()
     {

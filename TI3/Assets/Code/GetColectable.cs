@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Data;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class GetColectable : MonoBehaviour
 {
@@ -10,6 +12,12 @@ public class GetColectable : MonoBehaviour
     private static bool inspectActive = false;
     private static PlayerMove cachedPlayerMovement;
 
+    
+    
+   public void Delete()
+    { 
+        Destroy(gameObject);
+    }
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -27,11 +35,11 @@ public class GetColectable : MonoBehaviour
 
             cachedPlayerMovement = other.GetComponent<PlayerMove>();
 
-            if (cachedPlayerMovement != null)
-                cachedPlayerMovement.enabled = false;
+            //if (cachedPlayerMovement != null)
+                //cachedPlayerMovement.enabled = false;
         }
-
         Destroy(gameObject);
+        
     }
 
     public static void ReleaseInspect()
@@ -42,5 +50,6 @@ public class GetColectable : MonoBehaviour
             cachedPlayerMovement.enabled = true;
 
         cachedPlayerMovement = null;
+        
     }
 }
