@@ -2,10 +2,12 @@ using Sfx;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MainMenu : MonoBehaviour
 {
     float sounds = 1.0f;
     float music = 1.0f;
+    
      
     [SerializeField] Slider soundSlider;
     [SerializeField] Slider musicSlider;

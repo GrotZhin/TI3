@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FullScreenDay&Night
-  m_Shader: {fileID: -6465566751694194690, guid: b60026b31cb95fc49975180f16bbde2b, type: 3}
+  m_Name: PixelLook
+  m_Shader: {fileID: -6465566751694194690, guid: ccc5cf97331064340a43cb3d89441ade, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,9 +29,8 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -126,6 +125,8 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _PixelForce: 252
+    - _Pixelforce: 28
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
