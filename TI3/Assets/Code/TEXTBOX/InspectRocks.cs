@@ -1,0 +1,84 @@
+﻿using UnityEngine;
+
+public class InspectRocks : MonoBehaviour
+{
+    [Header("Textos do Item")]
+    [TextArea] public string rockMetalText;
+    [TextArea] public string informativeHeader;
+    [TextArea] public string informativeBody;
+
+    [Header("Configurações")]
+    public float interactRadius = 2f;
+    public KeyCode interactKey = KeyCode.E;
+    public string playerTag = "Player";
+
+    private static bool inspectActive = false;
+    private Transform player;
+    private static PlayerMove cachedPlayerMovement;
+
+    void Start()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag(playerTag);
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
+        else
+        {
+            Debug.LogWarning($"[InspectObject] Nenhum objeto com a tag '{playerTag}' foi encontrado na cena!");
+        }
+    }
+
+    void Update()
+    {
+        if (player == null) return;
+
+        float distance = Vector3.Distance(player.position, transform.position);
+
+        if (!inspectActive && distance <= interactRadius)
+        {
+            if (Input.GetKeyDown(interactKey))
+            {
+                OpenInspectMenu();
+            }
+        }
+    }
+
+    void OpenInspectMenu()
+    {
+        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+
+        if (manage != null)
+        {
+            manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
+            manage.OpenMenu();
+            manage.OnInspectClosed += ReleaseInspect;
+
+            inspectActive = true;
+
+            cachedPlayerMovement = player.GetComponent<PlayerMove>();
+            if (cachedPlayerMovement != null)
+                cachedPlayerMovement.enabled = false;
+        }
+    }
+
+    public static void ReleaseInspect()
+    {
+        inspectActive = false;
+
+        if (cachedPlayerMovement != null)
+            cachedPlayerMovement.enabled = true;
+
+        cachedPlayerMovement = null;
+
+        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+        if (manage != null)
+            manage.OnInspectClosed -= ReleaseInspect;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
+    }
+}
