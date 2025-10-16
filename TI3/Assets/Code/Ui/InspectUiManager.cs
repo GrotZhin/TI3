@@ -1,10 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Threading.Tasks;
 using TMPro;
 using Sfx;
+using System;
 public class InspectUiManager : MonoBehaviour
 {
+
     public GameObject inspCanvas;
     public GameObject MainUi;
     public CanvasGroup gp;
@@ -12,19 +13,19 @@ public class InspectUiManager : MonoBehaviour
     public Transform DoSize;
     public float tweendur = 0.8f;
 
+    public event Action OnInspectClosed;
+
     [Header("Relativos aos coletaveis")]
 
     public GameObject rockMetalTextUI;
     public GameObject informativeHeaderUI;
     public GameObject informativeBodyUI;
-    GetColectable getColectable;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         inspCanvas.SetActive(false);
-        getColectable =  new GetColectable();
     }
 
     // Update is called once per frame
@@ -49,6 +50,8 @@ public class InspectUiManager : MonoBehaviour
             inspCanvas.SetActive(false);
             ScaleAni();
             inspactive = false;
+
+            OnInspectClosed?.Invoke();
         }
     }
 
@@ -63,7 +66,6 @@ public class InspectUiManager : MonoBehaviour
 
     public async void Back()
     {
-
         await DoSize.DOScale(0.3f, 0.2f).SetEase(Ease.InFlash).SetUpdate(true).AsyncWaitForCompletion();
         gp.DOFade(0, 0.4f).SetEase(Ease.OutFlash).SetUpdate(true);
         inspCanvas.SetActive(false);
@@ -71,12 +73,11 @@ public class InspectUiManager : MonoBehaviour
         MainUi.SetActive(true);
         inspactive = false;
 
-        //necessario pra travar e nao ativar outro trigger do coletavel
-       
+        InspectRocks.ReleaseInspect();
+        OnInspectClosed?.Invoke();
     }
-   
-    
-    
+
+
     public async void ScaleAni()
     {
         if (!inspactive)
