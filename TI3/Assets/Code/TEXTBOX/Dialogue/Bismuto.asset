@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa5dc11a6ebff44cb80520f422475c1, type: 3}
+  m_Name: Bismuto
+  m_EditorClassIdentifier: 
+  npcName: Billie
+  nameColor: {r: 0.5471698, g: 0.3948914, b: 0.45646596, a: 1}
+  textColor: {r: 0.7924528, g: 0.3252047, b: 0.62550473, a: 1}
+  dialogueLines:
+  - OHHHHH, um ser novo
+  - Que bela composicao...
+  - Que belo DESING...
+  - 'QUE BELA ARTE !!!! '
+  - Desculpe, me desviei de novo, mas eh tao bom apreciar uma bela arte nao acha,
+    HIHIIHI
+  - Aceitarias um desafio de um novo amigo ?
+  - Estou tentando resolver esse enigma mas nao descrubo sua finda ...
+  - OH ... que fardo cruel, mas nem toda arte e compreendida pelos artistas
+  - Se puder me iluminar sobre isso, lhe agradecerei com fatos de minhas brilhante
+    mente

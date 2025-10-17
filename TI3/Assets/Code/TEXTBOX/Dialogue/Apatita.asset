@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa5dc11a6ebff44cb80520f422475c1, type: 3}
+  m_Name: Apatita
+  m_EditorClassIdentifier: 
+  npcName: Apollo
+  nameColor: {r: 0.45790315, g: 0.9245283, b: 0.8390209, a: 1}
+  textColor: {r: 0.3571111, g: 0.7075472, b: 0.6105227, a: 1}
+  dialogueLines:
+  - Que mundo bom !!
+  - 'Um jovem em plena saude, logo a noite ? '
+  - E seu sono rapaz ??? HEHE
+  - Mas enfim, JA QUE ESTAAAA AQUI.....
+  - Quer me ajudar com coisas geologicas ???
+  - E so um probleminha que nao consigo resolver aqui ...
+  - Se puder me ajudar te conto algumas das minhas descobertas geologicas
