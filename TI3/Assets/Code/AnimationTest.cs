@@ -23,8 +23,8 @@ public class AnimationTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter.i == 4 && openGate.open == true )
-            animator1.SetTrigger("abrir");
+       // if (counter.i == 4 && openGate.open == true )
+         //   animator1.SetTrigger("abrir");
 
     }
 
