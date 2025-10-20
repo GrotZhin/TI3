@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
 using UnityEngine.Splines.ExtrusionShapes;
+using UnityEngine.SceneManagement;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
@@ -149,7 +150,10 @@ public class GameUiManager : MonoBehaviour
 
 
     }
-    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
     async void SunAni()
     {
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
