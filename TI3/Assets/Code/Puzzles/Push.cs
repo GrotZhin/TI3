@@ -5,8 +5,6 @@ using UnityEngine.TerrainTools;
 public class Push : MonoBehaviour
 {
     [SerializeField] float power;
-
-    public int i = 0;
     private Transform player;
     [SerializeField] GameObject pai;
     public float interactRadius = 2f;

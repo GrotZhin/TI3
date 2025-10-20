@@ -10,6 +10,7 @@ TagManager:
   - OpenGate
   - Cam
   - MainC
+  - GM
   layers:
   - Default
   - TransparentFX

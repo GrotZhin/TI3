@@ -1,15 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CheckRockPuzzle : MonoBehaviour
+public class ExitRoom : MonoBehaviour
 {
     private Transform player;
     public float interactRadius = 2f;
     public KeyCode interactKey = KeyCode.E;
-    SimonSays simonSays;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        simonSays = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonSays>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
@@ -22,19 +22,7 @@ public class CheckRockPuzzle : MonoBehaviour
 
         float distance = Vector3.Distance(player.position, transform.position);
         if (distance < interactRadius)
-        {
-            if (Input.GetKeyDown(interactKey))
-            {
-                if (!simonSays.play)
-                {
-                    simonSays.play = true;
-                    simonSays.Play();
-                    return;
-                }
-                if (simonSays.canPlay) simonSays.RockObject(this.gameObject);
-                
-                
-            }
-        }
+             if (Input.GetKeyDown(interactKey)) SceneManager.LoadScene("Prototype");
+       
     }
 }

@@ -1,21 +1,20 @@
 using UnityEngine;
 
-public class AnimationTest : MonoBehaviour
+public class BoxCheck : MonoBehaviour
 {
     public Animator animator;
-    public Animator animator1;
-    OpenGate openGate;
+  
+    
     MeshRenderer renderer;
     Material materialPlaca;
     [SerializeField] GameObject identifier;
-    Push counter;
+    GM gm;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        counter = GameObject.FindGameObjectWithTag("Player").GetComponent<Push>();
-        openGate = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenGate>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
         renderer = GetComponent<MeshRenderer>();
         materialPlaca = renderer.material;
     }
@@ -23,8 +22,7 @@ public class AnimationTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // if (counter.i == 4 && openGate.open == true )
-         //   animator1.SetTrigger("abrir");
+      
 
     }
 
@@ -39,9 +37,9 @@ public class AnimationTest : MonoBehaviour
                 Material materialAtual = meshRenderer.material;
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
-                    identifier.SetActive(false);
-                    counter.i++;
-                    Debug.Log("i: " + counter.i);
+                     identifier.SetActive(false);
+                    gm.counterBox++;
+                    
                 }
             }
             
@@ -60,8 +58,8 @@ public class AnimationTest : MonoBehaviour
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
                     identifier.SetActive(true);
-                    counter.i--;
-                    Debug.Log("i: " + counter.i);
+                    gm.counterBox--;
+                    
                 }
             }
             
