@@ -7,7 +7,9 @@ public class PlayerMove : MonoBehaviour
     InputAction move;
     Vector3 moveInput;
     [SerializeField] CharacterController controller;
-    [SerializeField]  public float speed = 5f;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float rotationSpeed = 5f;
+    [SerializeField] float waitRotationPercentage = 20f;
 
     void Awake()
     {
@@ -17,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     
     void Start()
     {
-        move.performed += ctx => moveInput = transform.forward * ctx.ReadValue<Vector2>().y + transform.right * ctx.ReadValue<Vector2>().x;
+        move.performed += ctx => moveInput = Vector3.forward * ctx.ReadValue<Vector2>().y + Vector3.right * ctx.ReadValue<Vector2>().x;
         move.canceled += ctx => moveInput = Vector3.zero;
     }
     void OnEnable()
@@ -30,9 +32,13 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
+        Quaternion rot;
+        if(moveInput != Vector3.zero) rot = Quaternion.LookRotation(moveInput);
+        else rot = transform.rotation;
+        if(moveInput != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
+        if ((Quaternion.Angle(transform.rotation, rot) / 180 * 100) < waitRotationPercentage) controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
     }
-     void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.tag == "Plate")
         {
