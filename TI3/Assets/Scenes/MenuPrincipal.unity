@@ -1017,6 +1017,7 @@ GameObject:
   - component: {fileID: 315945564}
   - component: {fileID: 315945563}
   - component: {fileID: 315945562}
+  - component: {fileID: 315945565}
   m_Layer: 5
   m_Name: Iniciar
   m_TagString: Untagged
@@ -1138,6 +1139,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315945560}
   m_CullTransparentMesh: 1
+--- !u!114 &315945565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315945560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce2d4a483f13343a10a46079f44bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 315945563}
+  buttonText: {fileID: 681976093}
+  normalButtonColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  normalTextColor: {r: 0.7176471, g: 0.64705884, b: 0.36078432, a: 1}
+  hoverButtonColor: {r: 0.7176471, g: 0.64705884, b: 0.36078432, a: 1}
+  hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
+  clickButtonColor: {r: 0.5, g: 0.451949, b: 0.2570755, a: 1}
+  clickTextColor: {r: 0, g: 0, b: 0, a: 1}
+  normalScale: {x: 1, y: 1, z: 1}
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  scaleSpeed: 10
 --- !u!1 &362299656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1449,7 @@ GameObject:
   - component: {fileID: 539268251}
   - component: {fileID: 539268250}
   - component: {fileID: 539268249}
+  - component: {fileID: 539268252}
   m_Layer: 0
   m_Name: Controls
   m_TagString: Untagged
@@ -1546,6 +1571,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539268247}
   m_CullTransparentMesh: 1
+--- !u!114 &539268252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539268247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce2d4a483f13343a10a46079f44bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 539268250}
+  buttonText: {fileID: 54733721}
+  normalButtonColor: {r: 0, g: 0, b: 0, a: 1}
+  normalTextColor: {r: 0.72156864, g: 0.6509804, b: 0.36078432, a: 1}
+  hoverButtonColor: {r: 0.72156864, g: 0.6509804, b: 0.36078432, a: 1}
+  hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
+  clickButtonColor: {r: 0.49056602, g: 0.4371076, b: 0.242969, a: 1}
+  clickTextColor: {r: 0, g: 0, b: 0, a: 1}
+  normalScale: {x: 1, y: 1, z: 1}
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  scaleSpeed: 10
 --- !u!1 &589290884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PREFER\xCANCIAS"
+  m_text: "  OP\xC7\xD5ES"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc2614bc649a7d649a8deedcba001d30, type: 2}
   m_sharedMaterial: {fileID: -3350543047053301815, guid: dc2614bc649a7d649a8deedcba001d30, type: 2}
@@ -2807,6 +2855,7 @@ GameObject:
   - component: {fileID: 1193608118}
   - component: {fileID: 1193608117}
   - component: {fileID: 1193608116}
+  - component: {fileID: 1193608119}
   m_Layer: 5
   m_Name: Opcoes
   m_TagString: Untagged
@@ -2856,9 +2905,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2928,6 +2977,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193608114}
   m_CullTransparentMesh: 1
+--- !u!114 &1193608119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193608114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce2d4a483f13343a10a46079f44bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 1193608117}
+  buttonText: {fileID: 1862022154}
+  normalButtonColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+  normalTextColor: {r: 0.6901961, g: 0.61960787, b: 0.34509805, a: 1}
+  hoverButtonColor: {r: 0.69803923, g: 0.627451, b: 0.34901962, a: 1}
+  hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
+  clickButtonColor: {r: 0.5188679, g: 0.46293312, b: 0.24230151, a: 1}
+  clickTextColor: {r: 0, g: 0, b: 0, a: 1}
+  normalScale: {x: 1, y: 1, z: 1}
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  scaleSpeed: 10
 --- !u!1 &1199672919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,6 +3062,7 @@ GameObject:
   - component: {fileID: 1209246357}
   - component: {fileID: 1209246356}
   - component: {fileID: 1209246355}
+  - component: {fileID: 1209246358}
   m_Layer: 5
   m_Name: Sair
   m_TagString: Untagged
@@ -3111,6 +3184,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209246353}
   m_CullTransparentMesh: 1
+--- !u!114 &1209246358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209246353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce2d4a483f13343a10a46079f44bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 1209246356}
+  buttonText: {fileID: 2106818680}
+  normalButtonColor: {r: 0, g: 0, b: 0, a: 1}
+  normalTextColor: {r: 0.70980394, g: 0.63529414, b: 0.3529412, a: 1}
+  hoverButtonColor: {r: 0.6862745, g: 0.6117647, b: 0.34117648, a: 1}
+  hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
+  clickButtonColor: {r: 0.4811321, g: 0.4287017, b: 0.23829655, a: 1}
+  clickTextColor: {r: 0, g: 0, b: 0, a: 1}
+  normalScale: {x: 1, y: 1, z: 1}
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  scaleSpeed: 10
 --- !u!1 &1219199686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,6 +4338,7 @@ GameObject:
   - component: {fileID: 1742713207}
   - component: {fileID: 1742713206}
   - component: {fileID: 1742713205}
+  - component: {fileID: 1742713208}
   m_Layer: 0
   m_Name: Apply
   m_TagString: Untagged
@@ -4375,6 +4472,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742713203}
   m_CullTransparentMesh: 1
+--- !u!114 &1742713208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742713203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce2d4a483f13343a10a46079f44bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 1742713206}
+  buttonText: {fileID: 298905090}
+  normalButtonColor: {r: 0, g: 0, b: 0, a: 1}
+  normalTextColor: {r: 0.754717, g: 0.6828053, b: 0.3951584, a: 1}
+  hoverButtonColor: {r: 0.73333335, g: 0.6627451, b: 0.38431376, a: 1}
+  hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
+  clickButtonColor: {r: 0.5377358, g: 0.48709452, b: 0.28155035, a: 1}
+  clickTextColor: {r: 0, g: 0, b: 0, a: 1}
+  normalScale: {x: 1, y: 1, z: 1}
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  scaleSpeed: 10
 --- !u!1 &1862022152
 GameObject:
   m_ObjectHideFlags: 0

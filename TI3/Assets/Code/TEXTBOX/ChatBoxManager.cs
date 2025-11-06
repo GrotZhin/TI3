@@ -5,6 +5,7 @@ using TMPro;
 public class ChatBoxManager : MonoBehaviour
 {
     public static ChatBoxManager Instance;
+    public TextMeshProUGUI skipMessageText;
 
     [Header("UI")]
     public GameObject chatBoxCanvas;
@@ -21,6 +22,8 @@ public class ChatBoxManager : MonoBehaviour
     private int currentLineIndex = 0;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
+    public bool dialogueActive = false;
+    private bool dialogueSkipped = false;
 
     public event System.Action OnDialogueEnd;
 
@@ -28,11 +31,38 @@ public class ChatBoxManager : MonoBehaviour
     {
         Instance = this;
         chatBoxCanvas.SetActive(false);
+        ShowSkipMessage(false);
+    }
+
+    private void Update()
+    {
+        if (!dialogueActive) return;
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            dialogueSkipped = true;
+            if (isTyping)
+                CompleteLineInstantly();
+
+            ForceEndDialogue();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !dialogueSkipped)
+        {
+            ShowNextLine();
+            return;
+        }
     }
 
     public void StartDialogue(NPCDialogueData npcData)
     {
+        dialogueActive = true;
+        dialogueSkipped = false;
         chatBoxCanvas.SetActive(true);
+        ShowSkipMessage(true);
+
+        GlobalKeyBlocker.BlockKeys = true;
 
         if (playerMove != null)
             playerMove.enabled = false;
@@ -49,6 +79,9 @@ public class ChatBoxManager : MonoBehaviour
 
     public void ShowNextLine()
     {
+        if (!dialogueActive || dialogueSkipped)
+            return;
+
         if (isTyping)
         {
             CompleteLineInstantly();
@@ -57,14 +90,16 @@ public class ChatBoxManager : MonoBehaviour
 
         if (currentLineIndex >= lines.Length)
         {
-            EndDialogue();
+            ForceEndDialogue();
             return;
         }
+
 
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(TypeLine(lines[currentLineIndex]));
+
         currentLineIndex++;
     }
 
@@ -87,17 +122,32 @@ public class ChatBoxManager : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        dialogueText.text = lines[currentLineIndex - 1];
+        if (currentLineIndex > 0 && currentLineIndex <= lines.Length)
+            dialogueText.text = lines[currentLineIndex - 1];
         isTyping = false;
     }
 
-    private void EndDialogue()
+    public void ForceEndDialogue()
     {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        dialogueActive = false;
+
+        ShowSkipMessage(false);
         chatBoxCanvas.SetActive(false);
 
         if (playerMove != null)
             playerMove.enabled = true;
 
+        GlobalKeyBlocker.BlockKeys = false;
+
         OnDialogueEnd?.Invoke();
+    }
+
+    public void ShowSkipMessage(bool show)
+    {
+        if (skipMessageText != null)
+            skipMessageText.gameObject.SetActive(show);
     }
 }
