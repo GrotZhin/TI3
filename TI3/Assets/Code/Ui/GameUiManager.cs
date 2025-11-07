@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using UnityEngine.Splines.ExtrusionShapes;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
@@ -13,6 +14,7 @@ public class GameUiManager : MonoBehaviour
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
+    
     
     [SerializeField] RectTransform Sunicon;
     [SerializeField] RectTransform Moonicon;
@@ -35,6 +37,7 @@ public class GameUiManager : MonoBehaviour
     [SerializeField] RectTransform BgOptions;
      [SerializeField] RectTransform BC;
     [SerializeField] RectTransform BV;
+    
     public float BtTopPosx = -555;
     
     
@@ -168,7 +171,10 @@ public class GameUiManager : MonoBehaviour
         Moonicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Night, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
+        Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Night, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
     }
+   
+    
+    
 }
