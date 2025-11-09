@@ -53,6 +53,7 @@ public class SimonSays : MonoBehaviour
    
     public void Play()
     {
+        fails = 0;
         if(winPanel.activeSelf == true ) winPanel.SetActive(false);
         if (losePanel.activeSelf == true) losePanel.SetActive(false);
         
@@ -140,6 +141,10 @@ public class SimonSays : MonoBehaviour
     void Win()
     {
         gm.puzzle1 = true;
+        Array.Clear(sequenceShow, 0, sequenceShow.Length);
+        Array.Clear(sequence, 0, sequence.Length);
+        level = 1;
+        play = false;
 
         winPanel.SetActive(true);
         

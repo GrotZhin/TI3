@@ -7,7 +7,8 @@ public class PlayerMove : MonoBehaviour
     InputAction move;
     Vector3 moveInput;
     [SerializeField] CharacterController controller;
-    [SerializeField]  public float speed = 5f;
+    [SerializeField] public float speed = 5f;
+    bool isChildColliding = false;
 
     void Awake()
     {
@@ -32,11 +33,8 @@ public class PlayerMove : MonoBehaviour
     {
         controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
     }
-     void OnControllerColliderHit(ControllerColliderHit hit)
+     public void SetCollisionStatus(bool colliding)
     {
-        if (hit.collider.tag == "Plate")
-        {
-            Debug.Log("funfu");
-        }
+        isChildColliding = colliding;
     }
 }

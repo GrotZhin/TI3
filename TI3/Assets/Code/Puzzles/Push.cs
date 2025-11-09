@@ -39,6 +39,12 @@ public class Push : MonoBehaviour
         if (isPushing) this.gameObject.transform.SetParent(pai.transform);
         else this.gameObject.transform.parent = null;
 
+
+
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+     
         
     }
     // void OnControllerColliderHit(ControllerColliderHit hit)

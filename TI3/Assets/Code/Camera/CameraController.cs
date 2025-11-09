@@ -1,10 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
 
     GameObject activeCam;
+    BoxCollider boxCollider;
     void Start()
     { 
         activeCam = Camera.main.gameObject;
@@ -17,16 +19,17 @@ public class CameraController : MonoBehaviour
         if (collider.gameObject.CompareTag("Cam"))
         {
             collider.transform.GetChild(0).gameObject.SetActive(true);
-            
+            if (boxCollider != null) boxCollider.enabled = true;
 
-            BoxCollider boxCollider = collider.gameObject.GetComponent<BoxCollider>();
+            boxCollider = collider.gameObject.GetComponent<BoxCollider>();
 
             if (boxCollider != null) boxCollider.enabled = false;
 
             if (activeCam.tag != "MainCamera")
             {
-               collider.transform.GetChild(0).gameObject.SetActive(false);
-               activeCam.SetActive(false);
+                collider.transform.GetChild(0).gameObject.SetActive(false);
+                
+                activeCam.SetActive(false);
                 
             }
             var currentRotation =  collider.transform.GetChild(0).gameObject.transform.localEulerAngles.y;
@@ -38,11 +41,14 @@ public class CameraController : MonoBehaviour
         }
         if (collider.gameObject.CompareTag("MainC") && activeCam.tag != "MainCamera")
         {
-
+          
+            if (boxCollider != null) boxCollider.enabled = true;
             activeCam.SetActive(false);
             activeCam = Camera.main.gameObject;
             var currentRotation = collider.gameObject.transform.localEulerAngles.y;
             transform.localEulerAngles = new Vector3(0, currentRotation, 0);
+            
+           
         }
     }
 
