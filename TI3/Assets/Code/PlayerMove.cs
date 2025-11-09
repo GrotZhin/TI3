@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     PlayerAction playerActions;
-    InputAction move;
+    public InputAction move;
     Vector3 moveInput;
     [SerializeField] CharacterController controller;
     [SerializeField] float speed = 5f;
@@ -38,11 +38,5 @@ public class PlayerMove : MonoBehaviour
         if(moveInput != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
         if ((Quaternion.Angle(transform.rotation, rot) / 180 * 100) < waitRotationPercentage) controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
     }
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.collider.tag == "Plate")
-        {
-            Debug.Log("funfu");
-        }
-    }
+    
 }

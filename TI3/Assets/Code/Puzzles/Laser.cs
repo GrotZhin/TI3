@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -33,10 +34,14 @@ public class Laser : MonoBehaviour
                 position = rayHit.point;
                 direction = Vector3.Reflect(direction, rayHit.normal);
                 lr.SetPosition(i + 1, rayHit.point);
-                if(!canReflectOnAnything && !rayHit.collider.CompareTag("Mirror"))
+                if (!canReflectOnAnything && !rayHit.collider.CompareTag("Mirror"))
                 {
                     lr.positionCount = i + 2;
                     break;
+                }
+                if(rayHit.collider.CompareTag("goal"))
+                {
+                    Debug.Log("vc venceulinda");
                 }
             }
             else
