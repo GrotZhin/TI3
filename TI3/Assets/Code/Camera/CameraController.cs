@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -45,7 +46,12 @@ public class CameraController : MonoBehaviour
             if (boxCollider != null) boxCollider.enabled = true;
             activeCam.SetActive(false);
             activeCam = Camera.main.gameObject;
-            var currentRotation = collider.gameObject.transform.localEulerAngles.y;
+            float currentRotation;
+            if (collider.transform.childCount != 0) 
+                 currentRotation =  collider.transform.GetChild(0).gameObject.transform.localEulerAngles.y;
+            else currentRotation = collider.gameObject.transform.localEulerAngles.y;
+            
+          
             transform.localEulerAngles = new Vector3(0, currentRotation, 0);
             
            
