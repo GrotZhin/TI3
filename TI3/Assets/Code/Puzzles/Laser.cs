@@ -11,11 +11,14 @@ public class Laser : MonoBehaviour
     [SerializeField] float maxDistance = 300f;
     [SerializeField] int maxReflections = 5;
     [SerializeField] bool canReflectOnAnything = true;
+   
+    [SerializeField] HingeJoint hinge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         lr = GetComponent<LineRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -39,9 +42,9 @@ public class Laser : MonoBehaviour
                 {
                     if (rayHit.collider.CompareTag("goal"))
                     {
-                        Debug.Log("vc venceulinda");
+                        Porta();
                         break;
-                        
+
                     }
                     lr.positionCount = i + 2;
                     break;
@@ -56,5 +59,15 @@ public class Laser : MonoBehaviour
             }
         }
 
+    }
+    void Porta()
+    {
+        var motor = hinge.motor;
+        motor.force = 100;
+        motor.targetVelocity = 90;
+        motor.freeSpin = false;
+        hinge.motor = motor;
+        hinge.useMotor = true;
+        
     }
 }

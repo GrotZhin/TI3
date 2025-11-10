@@ -27,6 +27,7 @@ public class SimonSays : MonoBehaviour
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject errorPanel;
     [SerializeField] GameObject correctPanel;
+    [SerializeField] HingeJoint hinge;
     
     void Start()
     {
@@ -138,9 +139,12 @@ public class SimonSays : MonoBehaviour
         StartCoroutine(ShowSequence(pos, 0.2f));
 
     }
+    [ContextMenu("Win")]
     void Win()
-    {
+    {   
+        Porta();
         gm.puzzle1 = true;
+        
         Array.Clear(sequenceShow, 0, sequenceShow.Length);
         Array.Clear(sequence, 0, sequence.Length);
         level = 1;
@@ -157,5 +161,16 @@ public class SimonSays : MonoBehaviour
         play = false;
 
         losePanel.SetActive(true);
+    }
+    
+    void Porta()
+    {
+        var motor = hinge.motor;
+        motor.force = 100;
+        motor.targetVelocity = 90;
+        motor.freeSpin = false;
+        hinge.motor = motor;
+        hinge.useMotor = true;
+        
     }
 }

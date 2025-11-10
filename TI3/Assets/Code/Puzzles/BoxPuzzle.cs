@@ -1,4 +1,5 @@
 
+using System.Reflection;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class BoxPuzzle : MonoBehaviour
     [SerializeField]float power;
     [SerializeField] GameObject winPanel;
     Vector3 direction;
+    [SerializeField] HingeJoint hinge;
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,8 +26,10 @@ public class BoxPuzzle : MonoBehaviour
             Win();
         }
     }
+    [ContextMenu("Win")]
     void Win()
     {
+        Porta();
         gm.puzzle2 = true;
         winPanel.SetActive(true);
 
@@ -54,7 +58,17 @@ public class BoxPuzzle : MonoBehaviour
             Debug.Log("sasadsa");
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
 
-            if (rb != null) rb.linearVelocity = Vector3.zero; 
+            if (rb != null) rb.linearVelocity = Vector3.zero;
         }
+    }
+    void Porta()
+    {
+        var motor = hinge.motor;
+        motor.force = 100;
+        motor.targetVelocity = 90;
+        motor.freeSpin = false;
+        hinge.motor = motor;
+        hinge.useMotor = true;
+        
     }
 }
