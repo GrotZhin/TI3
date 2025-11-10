@@ -11,6 +11,8 @@ TagManager:
   - Cam
   - MainC
   - GM
+  - Mirror
+  - goal
   layers:
   - Default
   - TransparentFX

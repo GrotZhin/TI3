@@ -24,25 +24,29 @@ public class Laser : MonoBehaviour
         Cast(transform.position, transform.forward);
     }
 
-    void Cast(Vector3 position, Vector3 direction){
-        lr.SetPosition(0,position);
+    void Cast(Vector3 position, Vector3 direction)
+    {
+        lr.SetPosition(0, position);
         for (int i = 0; i < maxReflections; i++)
         {
-            Ray ray = new(position,direction);
-            if (Physics.Raycast(ray, out RaycastHit rayHit, maxDistance, 1))
+            Ray ray = new(position, direction);
+            if (Physics.Raycast(ray, out RaycastHit rayHit, maxDistance, 1, QueryTriggerInteraction.Ignore))
             {
                 position = rayHit.point;
                 direction = Vector3.Reflect(direction, rayHit.normal);
                 lr.SetPosition(i + 1, rayHit.point);
                 if (!canReflectOnAnything && !rayHit.collider.CompareTag("Mirror"))
                 {
+                    if (rayHit.collider.CompareTag("goal"))
+                    {
+                        Debug.Log("vc venceulinda");
+                        break;
+                        
+                    }
                     lr.positionCount = i + 2;
                     break;
                 }
-                if(rayHit.collider.CompareTag("goal"))
-                {
-                    Debug.Log("vc venceulinda");
-                }
+
             }
             else
             {
@@ -51,6 +55,6 @@ public class Laser : MonoBehaviour
                 break;
             }
         }
-        
+
     }
 }

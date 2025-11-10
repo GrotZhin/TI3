@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class RotateMirror : MonoBehaviour
+public class RotateMirrorX : MonoBehaviour
 {
     private Transform player;
     public float interactRadius = 2f;
@@ -30,27 +30,28 @@ public class RotateMirror : MonoBehaviour
                 if (!rotation)
                 {
                     rotation = true;
-                    
+
                 }
                 else
                     rotation = false;
-                    
+
             }
             if (rotation)
             {
                 playerMove.move.Disable();
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.W))
                 {
                     currentRotation -= 45 * Time.deltaTime;
-                    transform.localEulerAngles = new Vector3(0, currentRotation, 0);
+                    transform.localEulerAngles = new Vector3(currentRotation, 0, 0);
                 }
 
 
-                if (Input.GetKey(KeyCode.D))
+                if (Input.GetKey(KeyCode.S))
                     currentRotation += 45 * Time.deltaTime;
-                transform.localEulerAngles = new Vector3(0, currentRotation, 0);
+                transform.localEulerAngles = new Vector3(currentRotation, 0, 0);
 
-            }else playerMove.move.Enable();
+            }
+            else playerMove.move.Enable();
         }
     }
 }
