@@ -10,18 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aa5dc11a6ebff44cb80520f422475c1, type: 3}
-  m_Name: Quartzo
+  m_Name: QuartzoPuzzle
   m_EditorClassIdentifier: 
   npcName: Bunny
   nameColor: {r: 1, g: 0.3443396, b: 0.7953612, a: 1}
   textColor: {r: 0.5188679, g: 0.17866677, b: 0.38740066, a: 1}
   dialogueLines:
-  - Ola, que curioso te ver aqui
-  - Geralmente as pessoas nao vem aqui a noite....
-  - ENFIM ! Voce pode me ajudar ?
-  - Quero resolver esse desafio de caixas !!!
-  - Tem uma Vermelha, uma Azul, uma Amarela e uma Verde !!
-  - Consegue coloca-las nos lugares certos para me ajudar a recuperar minhas informacoes
-    ???
-  - Em troca te falo mais sobre mim !!!
-  - EU SOU LEGAL EU JURO !!
+  - Eu ACHO que temos que ajustar as caixas com as cores certas .....
+  - Nao tenho carteza.
+  - Desculpa nao sei tanto de cores assim .....
