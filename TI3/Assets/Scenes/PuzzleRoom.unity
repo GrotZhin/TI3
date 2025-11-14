@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!65 &277403431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -447,6 +449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!54 &380342561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -718,6 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &449313365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -949,6 +955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &467948308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1180,6 +1188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!65 &612132343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1389,6 +1399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &703598096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1909,6 +1921,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!54 &1091546115
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2113,6 +2127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!65 &1134365360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2237,6 +2253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!54 &1154069209
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3007,6 +3025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!65 &1462487212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3302,6 +3322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &1662599496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3535,6 +3557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 1751678653}
+  Ani: {fileID: 1751678654}
 --- !u!54 &1684450240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4109,6 +4133,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 22.1, y: -90.758, z: -0.151}
+--- !u!1 &1751678653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2213250049284706741, guid: 1b47174f0b2c47643836c589fb0fe665, type: 3}
+  m_PrefabInstance: {fileID: 1720480413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1751678654 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 784604273184800772, guid: 1b47174f0b2c47643836c589fb0fe665, type: 3}
+  m_PrefabInstance: {fileID: 1720480413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1783564539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4143,6 +4177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &1783564542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4352,6 +4388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &1922809207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4583,6 +4621,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &2014999022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4792,6 +4832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!65 &2093510146
 BoxCollider:
   m_ObjectHideFlags: 0

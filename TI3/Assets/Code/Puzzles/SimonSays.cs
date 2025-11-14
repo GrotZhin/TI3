@@ -62,6 +62,7 @@ public class SimonSays : MonoBehaviour
     }
     public void RockObject(GameObject rock)
     {
+        
         CheckSequence(rock, sequence);
     }
 

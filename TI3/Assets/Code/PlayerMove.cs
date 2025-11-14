@@ -43,8 +43,7 @@ public class PlayerMove : MonoBehaviour
     {
         
         controller.Move((speed * moveInput + Vector3.up * -10) * Time.deltaTime);
-     
-
+       
     }
 
     void Move(InputAction.CallbackContext ctx)
