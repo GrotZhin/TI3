@@ -9,7 +9,7 @@ public class InspectUiManager : MonoBehaviour
     public GameObject inspCanvas;
     public GameObject MainUi;
     public CanvasGroup gp;
-    bool inspactive = false;
+    public static bool inspactive = false;
     public Transform DoSize;
     public float tweendur = 0.8f;
 
@@ -82,8 +82,8 @@ public class InspectUiManager : MonoBehaviour
     {
         if (!inspactive)
         {
-            soundManager.PlaySound(SoundType.AmethystPopUp);
             await DoSize.DOScale(1.2f, tweendur).SetEase(Ease.OutCubic).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
+            soundManager.PlaySound(SoundType.AmethystPopUp);
         }
         else if (inspactive)
         {
