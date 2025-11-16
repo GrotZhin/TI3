@@ -11,6 +11,7 @@ public class InspectRocks : MonoBehaviour
     public float interactRadius = 2f;
     public KeyCode interactKey = KeyCode.E;
     public string playerTag = "Player";
+    public GameObject Rock;
 
     private static bool inspectActive = false;
     private Transform player;
@@ -50,6 +51,7 @@ public class InspectRocks : MonoBehaviour
 
         if (manage != null)
         {
+            
             manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
             manage.OpenMenu();
             manage.OnInspectClosed += ReleaseInspect;
@@ -60,12 +62,20 @@ public class InspectRocks : MonoBehaviour
             if (cachedPlayerMovement != null)
                 cachedPlayerMovement.enabled = false;
         }
+        if(InspectUiManager.inspactive = false)
+        {
+            Rock.SetActive(false);
+        }
+        else
+        {
+            Rock.SetActive(true);
+        }
     }
 
     public static void ReleaseInspect()
     {
         inspectActive = false;
-
+        
         if (cachedPlayerMovement != null)
             cachedPlayerMovement.enabled = true;
 
@@ -74,6 +84,7 @@ public class InspectRocks : MonoBehaviour
         InspectUiManager manage = FindObjectOfType<InspectUiManager>();
         if (manage != null)
             manage.OnInspectClosed -= ReleaseInspect;
+            
     }
 
     void OnDrawGizmosSelected()

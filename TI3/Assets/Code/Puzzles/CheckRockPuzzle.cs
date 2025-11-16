@@ -6,9 +6,12 @@ public class CheckRockPuzzle : MonoBehaviour
     public float interactRadius = 2f;
     public KeyCode interactKey = KeyCode.E;
     SimonSays simonSays;
+     public GameObject bixin;
+    public Animator Ani;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Ani = bixin.GetComponent<Animator>();
         simonSays = GameObject.FindGameObjectWithTag("Player").GetComponent<SimonSays>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -27,12 +30,16 @@ public class CheckRockPuzzle : MonoBehaviour
             {
                 if (!simonSays.play)
                 {
+                     Ani.SetTrigger("Button");
                     simonSays.play = true;
                     simonSays.Play();
                     return;
                 }
-                if (simonSays.canPlay) simonSays.RockObject(this.gameObject);
-                
+                if (simonSays.canPlay) {
+                    Ani.SetTrigger("Button");
+                    simonSays.RockObject(this.gameObject);
+                    
+                }
                 
             }
         }

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class ChatBoxManager : MonoBehaviour
 {
+    public Transform Chat;
     public static ChatBoxManager Instance;
     public TextMeshProUGUI skipMessageText;
 
@@ -36,7 +38,9 @@ public class ChatBoxManager : MonoBehaviour
 
     private void Update()
     {
-        if (!dialogueActive) return;
+        if (!dialogueActive) {Chat.DOScaleX(0.8f,0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
+        return;
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -57,6 +61,8 @@ public class ChatBoxManager : MonoBehaviour
 
     public void StartDialogue(NPCDialogueData npcData)
     {
+        Chat.DOScaleX(1.5f,0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
+        Chat.DOScaleX(1f,0.3f).SetUpdate(true);
         dialogueActive = true;
         dialogueSkipped = false;
         chatBoxCanvas.SetActive(true);
@@ -125,6 +131,7 @@ public class ChatBoxManager : MonoBehaviour
         if (currentLineIndex > 0 && currentLineIndex <= lines.Length)
             dialogueText.text = lines[currentLineIndex - 1];
         isTyping = false;
+        
     }
 
     public void ForceEndDialogue()
@@ -143,6 +150,7 @@ public class ChatBoxManager : MonoBehaviour
         GlobalKeyBlocker.BlockKeys = false;
 
         OnDialogueEnd?.Invoke();
+        
     }
 
     public void ShowSkipMessage(bool show)
