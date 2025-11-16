@@ -14,7 +14,7 @@ public class UpSc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameUiManager.DayTime)
+        if(!GM.DayTime)
         {
             Ani.SetBool("Up", true);
         }

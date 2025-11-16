@@ -5,8 +5,12 @@ public class GM : MonoBehaviour
     public int counterBox = 0;
     public bool puzzle1 = false, puzzle2 = false;
     public static GM instance;
+    public static bool DayTime;
+    public static bool firtsStart = true;
     void Awake()
     {
+        
+        Debug.Log("boll: " + firtsStart);
         if (instance == null)
         {
             instance = this;

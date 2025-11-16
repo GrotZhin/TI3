@@ -17,14 +17,14 @@ public class NPCSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameUiManager.DayTime)
+        if (GM.DayTime)
         {
 
             foreach (var obj in NPC) obj.SetActive(true);
             foreach (var obj in Rock) obj.SetActive(false);
             
         }
-        else if (!GameUiManager.DayTime)
+        else if (!GM.DayTime)
         {
             
             foreach (var obj in NPC) obj.SetActive(false);

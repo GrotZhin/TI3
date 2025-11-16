@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
-    
+
     public GameObject OMenu;
     public CanvasGroup PGroup;
     public CanvasGroup OGroup;
     public Material DayTimeFilter;
     public Color Day;
     public Color Night;
-    
-    
+
+
     [SerializeField] RectTransform Sunicon;
     [SerializeField] RectTransform Moonicon;
     public float BgTopPosY, BgmiddlePosY;
@@ -35,16 +35,42 @@ public class GameUiManager : MonoBehaviour
     [SerializeField] RectTransform B3;
     //Options Menu Ani
     [SerializeField] RectTransform BgOptions;
-     [SerializeField] RectTransform BC;
+    [SerializeField] RectTransform BC;
     [SerializeField] RectTransform BV;
-    
+
     public float BtTopPosx = -555;
-    
-    
+    public static GameUiManager gameUiManager;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
+
+
+        Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
+        if (GM.firtsStart)
+        {
+
+            SunAni();
+
+        }
+        else
+        {
+
+            if (GM.DayTime)
+            {
+                GM.DayTime = false;
+
+                SunAni();
+            }
+
+            if (!GM.DayTime)
+            {
+                GM.DayTime = true;
+                MoonAni();
+            }
+        }
+        GM.firtsStart = false;
     }
 
     // Update is called once per frame
@@ -61,18 +87,15 @@ public class GameUiManager : MonoBehaviour
             {
                 DNTimer = DNCooldown;
 
-                if (DayTime)
+                if (GM.DayTime)
                 {
-
-
                     SunAni();
-                    DayTime = false;
+                    GM.DayTime = false;
                 }
                 else
                 {
-
                     MoonAni();
-                    DayTime = true;
+                    GM.DayTime = true;
                 }
             }
         }
@@ -80,17 +103,17 @@ public class GameUiManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PMenu.SetActive(true);
-            
+
             PauseMenuani();
             Time.timeScale = 0;
-            
+
         }
     }
     public void BlockerDo()
     {
         Blocker.DOAnchorPosX(410.2825f, 0.1f).SetUpdate(true)
-        .SetAutoKill(false) 
-            .OnComplete(async () => 
+        .SetAutoKill(false)
+            .OnComplete(async () =>
             {
                 await Blocker.DOScale(2, 0.8f).SetUpdate(true).AsyncWaitForCompletion();
                 Blocker.DOAnchorPosX(99999, 0.1f).SetUpdate(true);
@@ -99,7 +122,7 @@ public class GameUiManager : MonoBehaviour
     public void PauseMenuani()
     {
         BlockerDo();
-        
+
         PGroup.DOFade(1, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         Bg.DOAnchorPosX(BgmiddlePosY, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
         B1.DOAnchorPosX(48.14868f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -137,7 +160,7 @@ public class GameUiManager : MonoBehaviour
         BV.DOAnchorPosX(518.995f, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true);
 
     }
-    
+
     public async void Back2Menu()
     {
         BlockerDo();
@@ -162,8 +185,9 @@ public class GameUiManager : MonoBehaviour
         Sunicon.DOAnchorPosY(UpmiddlePosY, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         Sunicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
-        Color startColor = Shader.GetGlobalColor("_ColorPallete");DOTween.To(() => startColor,x => Shader.SetGlobalColor("_ColorPallete", x),Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
+        Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         await Moonicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
+
     }
 
     async void MoonAni()
@@ -173,8 +197,9 @@ public class GameUiManager : MonoBehaviour
         Moonicon.DORotate(new Vector2(0, 360), TweenDur, RotateMode.FastBeyond360);
         Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Night, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
+
     }
-   
-    
-    
+
+
+
 }

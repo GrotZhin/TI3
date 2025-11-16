@@ -23,7 +23,7 @@ public class BoxPuzzle : MonoBehaviour
     void Start()
     {
         winPanel.SetActive(false);
-        //gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
     }
 
     // Update is called once per frame
