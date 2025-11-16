@@ -2081,6 +2081,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!54 &449313364
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2340,6 +2342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!54 &467948307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5300,7 +5304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcData: {fileID: 11400000, guid: 14a02591bcb4a6b45a455a7adfedfb4b, type: 2}
-  interactRadius: 2
+  interactRadius: 3
   interactKey: 101
   lookSpeed: 5
   cooldownTime: 0.2
@@ -5983,6 +5987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a17ba4b4e614c84eb23bc8f98ded080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Chat: {fileID: 0}
   skipMessageText: {fileID: 0}
   chatBoxCanvas: {fileID: 1621958822}
   nameText: {fileID: 426799755}
@@ -7487,6 +7492,7 @@ MonoBehaviour:
   interactRadius: 2
   interactKey: 101
   playerTag: Player
+  Rock: {fileID: 0}
 --- !u!95 &1583272572
 Animator:
   serializedVersion: 7
@@ -9429,6 +9435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!54 &1922809206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10430,6 +10438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRadius: 2
   interactKey: 101
+  bixin: {fileID: 0}
+  Ani: {fileID: 0}
 --- !u!54 &2093510145
 Rigidbody:
   m_ObjectHideFlags: 0

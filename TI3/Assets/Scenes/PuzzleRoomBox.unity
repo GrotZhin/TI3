@@ -1346,6 +1346,10 @@ PrefabInstance:
       propertyPath: npcData
       value: 
       objectReference: {fileID: 11400000, guid: c6f662c050d36b54e84dd8ea2ce512a5, type: 2}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: interactRadius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4316,6 +4320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a17ba4b4e614c84eb23bc8f98ded080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Chat: {fileID: 0}
   skipMessageText: {fileID: 0}
   chatBoxCanvas: {fileID: 1451993608}
   nameText: {fileID: 467960779}
