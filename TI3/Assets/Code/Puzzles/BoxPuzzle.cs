@@ -64,6 +64,7 @@ public class BoxPuzzle : MonoBehaviour
     {
         if (hold.GetComponent<Rigidbody>() != null)
         {
+            GM.interacting = true;
             holdObject = hold;
             holdObjectRb = hold.GetComponent<Rigidbody>();
 
@@ -78,6 +79,8 @@ public class BoxPuzzle : MonoBehaviour
     {
         if (holdObject != null)
         {
+            
+            GM.interacting = false;
             holdObjectRb.isKinematic = false;
             holdObject.transform.position = dropPoint.position;
             holdObject.transform.parent = null;

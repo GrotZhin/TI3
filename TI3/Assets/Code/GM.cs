@@ -7,6 +7,7 @@ public class GM : MonoBehaviour
     public static GM instance;
     public static bool DayTime;
     public static bool firtsStart = true;
+    public static bool interacting = false;
     void Awake()
     {
         

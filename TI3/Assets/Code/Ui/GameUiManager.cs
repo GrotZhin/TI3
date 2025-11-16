@@ -46,31 +46,19 @@ public class GameUiManager : MonoBehaviour
     void Start()
     {
 
-
+        Debug.Log("BOLEANA DIA E NOITE" + GM.DayTime);
         Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
-        if (GM.firtsStart)
-        {
-
-            SunAni();
-
-        }
+        
+        if (GM.firtsStart) SunAni();
+        
         else
         {
-
-            if (GM.DayTime)
-            {
-                GM.DayTime = false;
-
-                SunAni();
-            }
-
-            if (!GM.DayTime)
-            {
-                GM.DayTime = true;
-                MoonAni();
-            }
+            if (!GM.DayTime) SunAni();
+            
+            if (GM.DayTime) MoonAni();
         }
         GM.firtsStart = false;
+
     }
 
     // Update is called once per frame
