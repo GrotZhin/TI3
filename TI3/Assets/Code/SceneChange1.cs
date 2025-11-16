@@ -5,7 +5,7 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 
-public class SceneChange : MonoBehaviour
+public class SceneChange2 : MonoBehaviour
 {
     [SerializeField] RectTransform trans;
     [SerializeField] float tweendur;
@@ -23,7 +23,7 @@ public class SceneChange : MonoBehaviour
         await trans.DOAnchorPosX(-2562, tweendur).SetUpdate(true).AsyncWaitForCompletion();
         
         
-        if (other.gameObject.CompareTag("Player")&& GameUiManager.DayTime)
+        if (other.gameObject.CompareTag("Player"))
             SceneManager.LoadScene(sceneName);
         
 
