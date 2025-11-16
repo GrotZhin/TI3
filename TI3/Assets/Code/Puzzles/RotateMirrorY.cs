@@ -28,29 +28,27 @@ public class RotateMirrorY : MonoBehaviour
             if (Input.GetKeyDown(interactKey))
             {
                 if (!rotation)
-                {
                     rotation = true;
-                    
-                }
                 else
                     rotation = false;
-                    
+
             }
             if (rotation)
             {
                 playerMove.move.Disable();
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A))
                 {
-                    currentRotation -= 45 * Time.deltaTime;
+                    currentRotation -= 45;
                     transform.localEulerAngles = new Vector3(0, currentRotation, 0);
                 }
 
 
-                if (Input.GetKey(KeyCode.D))
-                    currentRotation += 45 * Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.D))
+                    currentRotation += 45;
                 transform.localEulerAngles = new Vector3(0, currentRotation, 0);
 
-            }else playerMove.move.Enable();
+            }
+            else playerMove.move.Enable();
         }
     }
 }

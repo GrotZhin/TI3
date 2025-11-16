@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TerrainTools;
+using UnityEngine.UIElements;
 
 public class Push : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Push : MonoBehaviour
     public float interactRadius = 2f;
     public KeyCode interactKey = KeyCode.E;
     bool isPushing = false;
+    [SerializeField] BoxPuzzle boxPuzzle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,13 +33,20 @@ public class Push : MonoBehaviour
 
             if (Input.GetKeyDown(interactKey))
             {
-                if (!isPushing) isPushing = true;
-                else isPushing = false;
+                if (!isPushing)
+                {
+                    isPushing = true;
+                  boxPuzzle.Pickup(this.gameObject);
+                }
+                else
+                {   
+                 isPushing = false;
+                 boxPuzzle.Drop();
+                }
             }
         }
 
-        if (isPushing) this.gameObject.transform.SetParent(pai.transform);
-        else this.gameObject.transform.parent = null;
+       
 
 
 
@@ -47,20 +56,5 @@ public class Push : MonoBehaviour
      
         
     }
-    // void OnControllerColliderHit(ControllerColliderHit hit)
-    // {
-    //     if (hit.collider.CompareTag("Push"))
-    //     {
-    //         Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-
-    //         if (rb != null)
-    //         {
-
-    //             Vector3 direction = hit.gameObject.transform.position - this.transform.position;
-    //             direction.y = 0;
-    //             direction.Normalize();
-    //             rb.AddForceAtPosition(direction * power, transform.position, ForceMode.Impulse);
-    //         }
-    //     }
-    // }
+   
 }
