@@ -120,8 +120,10 @@ public class GameUiManager : MonoBehaviour
     }
     public void Back()
     {
+        Debug.Log("comecou");
         Time.timeScale = 1;
         GetColectable.ReleaseInspect();
+        Debug.Log("acabou");
     }
     public async void BackAni()
     {
@@ -131,8 +133,6 @@ public class GameUiManager : MonoBehaviour
         B2.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         B3.DOAnchorPosX(BtTopPosx, TweenDur).SetEase(Ease.InOutFlash).SetUpdate(true);
         await PGroup.DOFade(0, TweenDur).SetEase(Ease.OutFlash).SetUpdate(true).AsyncWaitForCompletion();
-
-
 
         PMenu.SetActive(false);
 

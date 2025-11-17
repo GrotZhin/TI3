@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor.Callbacks;
@@ -11,6 +12,7 @@ public class BoxPuzzle : MonoBehaviour
     [SerializeField] float pickupRange;
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject holdObject;
+    [SerializeField] GameObject bixin;
     Rigidbody holdObjectRb;
     [SerializeField] Transform carryPoint;
     [SerializeField] Transform dropPoint;
@@ -18,28 +20,30 @@ public class BoxPuzzle : MonoBehaviour
     Vector3 direction;
     [SerializeField] HingeJoint hinge;
     public static BoxPuzzle boxPuzzle;
+    [SerializeField] PlayerMove playerMove;
+    [SerializeField] bool drop = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         winPanel.SetActive(false);
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
+        // gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gm.counterBox >= 4)
-        {
-            Win();
-        }
+        // if (gm.counterBox >= 4)
+        // {
+        //     Win();
+        // }
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (holdObject == null)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRange, pickupLayer))
+                if (Physics.Raycast(bixin.transform.position, bixin.transform.forward, out hit, pickupRange, pickupLayer))
                 {
 
                     if (hit.collider.CompareTag("Push"))
@@ -57,7 +61,7 @@ public class BoxPuzzle : MonoBehaviour
     void Win()
     {
         Porta();
-        gm.puzzle2 = true;
+        //gm.puzzle2 = true;
         winPanel.SetActive(true);
 
     }
@@ -65,11 +69,11 @@ public class BoxPuzzle : MonoBehaviour
     {
         if (hold.GetComponent<Rigidbody>() != null)
         {
-           
+
             holdObject = hold;
             holdObjectRb = hold.GetComponent<Rigidbody>();
 
-           // holdObjectRb.isKinematic = true;
+            holdObjectRb.isKinematic = true;
             holdObjectRb.transform.position = carryPoint.position;
             holdObject.transform.parent = carryPoint;
 
@@ -78,23 +82,43 @@ public class BoxPuzzle : MonoBehaviour
     }
     public void Drop()
     {
-        if (holdObject != null)
+        if (drop)
         {
-            
-            GM.interacting = false;
-            //holdObjectRb.isKinematic = false;
-            holdObject.transform.position = dropPoint.position;
-            holdObject.transform.parent = null;
-            holdObject = null;
-            holdObjectRb = null;
-            RaycastHit[] hit = Physics.RaycastAll(transform.position, Vector3.down, 0.8f);
-            if (hit.Length > 0)
+
+            if (holdObject != null)
             {
-                holdObject.transform.position = hit[0].normal * 0.5f;
+                playerMove.move.Disable();
+                StartCoroutine(EnableMove());
+                holdObjectRb.isKinematic = false;
+                holdObject.transform.position = dropPoint.position;
+                holdObject.transform.parent = null;
+                holdObject = null;
+                holdObjectRb = null;
+
+
+            }
+        }
+        else
+        {
+            if (holdObject != null)
+            {
+                playerMove.move.Disable();
+
+                StartCoroutine(EnableMove());
+                //holdObject.transform.position = dropPoint.position;
+                holdObject.transform.parent = null;
+                holdObjectRb.isKinematic= false;
+                holdObjectRb.AddForce(bixin.transform.forward * power+Vector3.up*0.5f, ForceMode.Impulse);
+                holdObject = null;
+                holdObjectRb = null;
             }
         }
     }
-    
+    IEnumerator EnableMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerMove.move.Enable();
+    }
     void Porta()
     {
         var motor = hinge.motor;
@@ -103,6 +127,18 @@ public class BoxPuzzle : MonoBehaviour
         motor.freeSpin = false;
         hinge.motor = motor;
         hinge.useMotor = true;
+
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Drop"))
+            drop = true;
+        
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Drop"))
+            drop = false;
 
     }
 }
