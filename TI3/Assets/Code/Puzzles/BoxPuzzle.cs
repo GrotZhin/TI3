@@ -19,6 +19,7 @@ public class BoxPuzzle : MonoBehaviour
     [SerializeField] HingeJoint hinge;
     public static BoxPuzzle boxPuzzle;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,11 +65,11 @@ public class BoxPuzzle : MonoBehaviour
     {
         if (hold.GetComponent<Rigidbody>() != null)
         {
-            GM.interacting = true;
+           
             holdObject = hold;
             holdObjectRb = hold.GetComponent<Rigidbody>();
 
-            holdObjectRb.isKinematic = true;
+           // holdObjectRb.isKinematic = true;
             holdObjectRb.transform.position = carryPoint.position;
             holdObject.transform.parent = carryPoint;
 
@@ -81,11 +82,16 @@ public class BoxPuzzle : MonoBehaviour
         {
             
             GM.interacting = false;
-            holdObjectRb.isKinematic = false;
+            //holdObjectRb.isKinematic = false;
             holdObject.transform.position = dropPoint.position;
             holdObject.transform.parent = null;
             holdObject = null;
             holdObjectRb = null;
+            RaycastHit[] hit = Physics.RaycastAll(transform.position, Vector3.down, 0.8f);
+            if (hit.Length > 0)
+            {
+                holdObject.transform.position = hit[0].normal * 0.5f;
+            }
         }
     }
     
