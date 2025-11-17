@@ -23,7 +23,7 @@ public class ExitRoom : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("exit"))
                 {
-                    Debug.Log("Ma oi");   
+                    
                 SceneManager.LoadScene("Prototype");
                 }
             }

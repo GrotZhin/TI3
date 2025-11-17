@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using Sfx;
 
 public class ChatBoxManager : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class ChatBoxManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !dialogueSkipped)
         {
+            soundManager.PlaySound(SoundType.Talk);
             ShowNextLine();
             return;
         }
@@ -67,6 +69,8 @@ public class ChatBoxManager : MonoBehaviour
         dialogueSkipped = false;
         chatBoxCanvas.SetActive(true);
         ShowSkipMessage(true);
+        
+        soundManager.PlaySound(SoundType.Talk);
 
         GlobalKeyBlocker.BlockKeys = true;
 

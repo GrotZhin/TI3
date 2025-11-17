@@ -2,6 +2,7 @@ using Sfx;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Rendering;
 
 public class MainMenu : MonoBehaviour
 {
@@ -64,9 +65,10 @@ public class MainMenu : MonoBehaviour
     }
     public void SavePreferences()
     {
-        // Save player preferences
+       // Save player preferences
         PlayerPrefs.SetFloat("Sounds", sounds);
         PlayerPrefs.SetFloat("Music", music);
+        
     }
     public void SetSoundVolume()
     {

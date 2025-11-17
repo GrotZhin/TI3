@@ -11,7 +11,7 @@ public class GM : MonoBehaviour
     void Awake()
     {
         
-        Debug.Log("boll: " + firtsStart);
+      
         if (instance == null)
         {
             instance = this;

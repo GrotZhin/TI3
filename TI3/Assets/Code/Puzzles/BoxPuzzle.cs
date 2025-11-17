@@ -84,7 +84,6 @@ public class BoxPuzzle : MonoBehaviour
             holdObjectRb.isKinematic = false;
             holdObject.transform.position = dropPoint.position;
             holdObject.transform.parent = null;
-
             holdObject = null;
             holdObjectRb = null;
         }

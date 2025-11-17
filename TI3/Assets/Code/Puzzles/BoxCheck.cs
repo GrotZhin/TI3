@@ -32,12 +32,14 @@ public class BoxCheck : MonoBehaviour
         {
 
             MeshRenderer meshRenderer = other.gameObject.GetComponent<MeshRenderer>();
+           
             if (meshRenderer != null)
             {
                 Material materialAtual = meshRenderer.material;
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
-                     identifier.SetActive(false);
+                    identifier.SetActive(false); 
+                   
                     gm.counterBox++;
                     
                 }

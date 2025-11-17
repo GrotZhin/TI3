@@ -12,6 +12,8 @@ namespace Sfx
         AmethystPopUp,
         Sparkles,
         Menu,
+        Walk,
+        Talk,
 
     }
 
@@ -26,10 +28,7 @@ namespace Sfx
 
       
 
-        public void Start()
-        {
-           
-        }
+       
 
         public void Awake()
         {
