@@ -5,6 +5,7 @@ using System.Collections;
 using Unity.VisualScripting;
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SimonSays : MonoBehaviour
@@ -15,6 +16,9 @@ public class SimonSays : MonoBehaviour
     [SerializeField] GameObject[] rocksShow;
     [SerializeField] GameObject[] sequence;
     [SerializeField] GameObject[] sequenceShow;
+    [SerializeField] Image timerBar;
+    float totalTime;
+    float atualTime;
     [SerializeField] int position = 0;
     [SerializeField] int showPosition = 0;
 
@@ -22,18 +26,29 @@ public class SimonSays : MonoBehaviour
     public bool canPlay = false;
     [SerializeField] int level = 1;
     [SerializeField] int fails = 0;
+    Coroutine timer;
     GM gm;
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject errorPanel;
     [SerializeField] GameObject correctPanel;
     [SerializeField] HingeJoint hinge;
-    
+
     void Start()
     {
+       
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
         winPanel.SetActive(false);
         losePanel.SetActive(false);
+    }
+    void Update()
+    {
+        if(atualTime > 0)
+        {
+            atualTime-= Time.deltaTime;
+            timerBar.fillAmount = atualTime/totalTime;
+            
+        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -51,19 +66,19 @@ public class SimonSays : MonoBehaviour
 
         }
     }
-   
+
     public void Play()
     {
         fails = 0;
-        if(winPanel.activeSelf == true ) winPanel.SetActive(false);
+        if (winPanel.activeSelf == true) winPanel.SetActive(false);
         if (losePanel.activeSelf == true) losePanel.SetActive(false);
-        
+
         CreateSequence(rocks, rocksShow, level + 1);
         StartCoroutine(ShowSequence(showPosition, 1));
     }
     public void RockObject(GameObject rock)
     {
-        
+
         CheckSequence(rock, sequence);
     }
 
@@ -73,10 +88,13 @@ public class SimonSays : MonoBehaviour
         if (rock == sequence[position])
         {
             position += 1;
+            //chamar sfx de acerto
         }
         else
         {
-
+            //chamar sfx de erro
+            timerBar.gameObject.SetActive(false);
+            StopCoroutine(timer);
             position = 0;
             fails++;
 
@@ -87,12 +105,15 @@ public class SimonSays : MonoBehaviour
             }
             errorPanel.SetActive(true);
             StartCoroutine(DisableObject());
-            
+
             return;
         }
 
         if (position == sequence.Length)
         {
+            // se acertar a sequencia toda vem pra ca
+            timerBar.gameObject.SetActive(false);
+            StopCoroutine(timer);
             level++;
             position = 0;
             if (level > 3)
@@ -109,26 +130,49 @@ public class SimonSays : MonoBehaviour
     IEnumerator DisableObject()
     {
         yield return new WaitForSeconds(2);
-        if (correctPanel.activeSelf)correctPanel.SetActive(false);
-        if (errorPanel.activeSelf)errorPanel.SetActive(false);
-        
-         StartCoroutine(ShowSequence(showPosition, 1));
+        if (correctPanel.activeSelf) correctPanel.SetActive(false);
+        if (errorPanel.activeSelf) errorPanel.SetActive(false);
+
+        StartCoroutine(ShowSequence(showPosition, 1));
     }
     IEnumerator ShowSequence(int pos, float time)
     {
         yield return new WaitForSeconds(time);
         canPlay = false;
-       
+
         if (pos >= sequenceShow.Length)
         {
             canPlay = true;
-            Debug.Log("saiu");
+            totalTime = level * 5;
+            
+           timer = StartCoroutine(Timer(totalTime));
             yield break;
         }
 
-        Debug.Log("here i am " + pos);
+
         sequenceShow[pos].SetActive(true);
         StartCoroutine(UnShow(pos));
+
+    }
+    IEnumerator Timer(float timer)
+    {
+        timerBar.gameObject.SetActive(true);
+        atualTime = totalTime;
+        if(timerBar != null) timerBar.fillAmount = 1;
+       
+        yield return new WaitForSeconds(timer);
+        position = 0;
+        fails++;  
+        timerBar.gameObject.SetActive(false);
+        if (fails > 2)
+        {
+            Lose();
+            yield break;
+        }
+      
+        errorPanel.SetActive(true);
+        StartCoroutine(DisableObject());
+
 
     }
     IEnumerator UnShow(int pos)
@@ -142,17 +186,17 @@ public class SimonSays : MonoBehaviour
     }
     [ContextMenu("Win")]
     void Win()
-    {   
+    {
         Porta();
         gm.puzzle1 = true;
-        
+
         Array.Clear(sequenceShow, 0, sequenceShow.Length);
         Array.Clear(sequence, 0, sequence.Length);
         level = 1;
         play = false;
 
         winPanel.SetActive(true);
-        
+
     }
     void Lose()
     {
@@ -163,7 +207,7 @@ public class SimonSays : MonoBehaviour
 
         losePanel.SetActive(true);
     }
-    
+
     void Porta()
     {
         var motor = hinge.motor;
@@ -172,6 +216,6 @@ public class SimonSays : MonoBehaviour
         motor.freeSpin = false;
         hinge.motor = motor;
         hinge.useMotor = true;
-        
+
     }
 }
