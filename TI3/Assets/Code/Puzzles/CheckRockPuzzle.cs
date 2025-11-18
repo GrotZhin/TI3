@@ -8,6 +8,8 @@ public class CheckRockPuzzle : MonoBehaviour
     SimonSays simonSays;
      public GameObject bixin;
     public Animator Ani;
+    public GameObject Spawn;
+    public GameObject Master;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +39,7 @@ public class CheckRockPuzzle : MonoBehaviour
                 }
                 if (simonSays.canPlay) {
                     Ani.SetTrigger("Button");
+                    Instantiate(Spawn, Master.transform.position, Quaternion.identity);
                     simonSays.RockObject(this.gameObject);
                     
                 }
