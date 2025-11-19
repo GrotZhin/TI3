@@ -1,9 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Threading.Tasks;
-using UnityEngine.Splines.ExtrusionShapes;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 public class GameUiManager : MonoBehaviour
 {
     public GameObject PMenu;
@@ -42,6 +41,12 @@ public class GameUiManager : MonoBehaviour
     public static GameUiManager gameUiManager;
 
 
+    [Header("Audio")]
+    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] Slider sfx;
+    [SerializeField] Slider music;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,7 +63,22 @@ public class GameUiManager : MonoBehaviour
             if (GM.DayTime) MoonAni();
         }
         GM.firtsStart = false;
-
+        if(sfx!=null){
+            float value = PlayerPrefs.GetFloat("Sounds",1);
+            float temp = Mathf.Log10(value) * 20;
+            if (value == 0) temp = -60;
+            audioMixer.SetFloat("sfxVolume", temp);
+            sfx.value = value;
+            sfx.onValueChanged.AddListener(SetSfx);
+        }
+        if(music!=null){
+            float value = PlayerPrefs.GetFloat("Music",1);
+            float temp = Mathf.Log10(value) * 20;
+            if (value == 0) temp = -60;
+            audioMixer.SetFloat("musicVolume", temp);
+            music.value = value;
+            music.onValueChanged.AddListener(SetMusic);
+        }
     }
 
     // Update is called once per frame
@@ -161,8 +181,12 @@ public class GameUiManager : MonoBehaviour
 
 
         OMenu.SetActive(false);
-
-
+        if(music!=null){
+            PlayerPrefs.SetFloat("Music",music.value);
+        }
+        if(sfx!=null){
+            PlayerPrefs.SetFloat("Sounds",sfx.value);
+        }
     }
     public void MainMenu()
     {
@@ -187,7 +211,15 @@ public class GameUiManager : MonoBehaviour
         await Sunicon.DOAnchorPosY(UpTopPosY, TweenDur).SetEase(Ease.InOutCubic).SetUpdate(true).AsyncWaitForCompletion();
 
     }
-
-
+    public void SetSfx(float value){
+        float temp = Mathf.Log10(value) * 20;
+        if (value == 0) temp = -60;
+        audioMixer.SetFloat("sfxVolume", temp);
+    }
+    public void SetMusic(float value){
+        float temp = Mathf.Log10(value) * 20;
+        if (value == 0) temp = -60;
+        audioMixer.SetFloat("musicVolume", temp);
+    }
 
 }
