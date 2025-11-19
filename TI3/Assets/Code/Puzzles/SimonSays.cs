@@ -29,6 +29,7 @@ public class SimonSays : MonoBehaviour
     Coroutine timer;
     GM gm;
     [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject startText;
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject errorPanel;
     [SerializeField] GameObject correctPanel;
@@ -72,6 +73,7 @@ public class SimonSays : MonoBehaviour
         fails = 0;
         if (winPanel.activeSelf == true) winPanel.SetActive(false);
         if (losePanel.activeSelf == true) losePanel.SetActive(false);
+        if(startText.activeSelf == true) startText.SetActive(false);
 
         CreateSequence(rocks, rocksShow, level + 1);
         StartCoroutine(ShowSequence(showPosition, 1));
@@ -187,7 +189,7 @@ public class SimonSays : MonoBehaviour
     [ContextMenu("Win")]
     void Win()
     {
-        Porta();
+       // Porta();
         gm.puzzle1 = true;
 
         Array.Clear(sequenceShow, 0, sequenceShow.Length);
