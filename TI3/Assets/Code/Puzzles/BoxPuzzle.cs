@@ -116,7 +116,7 @@ public class BoxPuzzle : MonoBehaviour
     }
     IEnumerator EnableMove()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         playerMove.move.Enable();
     }
     void Porta()
