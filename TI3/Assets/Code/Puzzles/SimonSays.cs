@@ -37,18 +37,28 @@ public class SimonSays : MonoBehaviour
 
     void Start()
     {
-       
+
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
         winPanel.SetActive(false);
         losePanel.SetActive(false);
     }
     void Update()
     {
-        if(atualTime > 0)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            atualTime-= Time.deltaTime;
-            timerBar.fillAmount = atualTime/totalTime;
-            
+            if (!play)
+            {
+                //Ani.SetTrigger("Button");
+                play = true;
+                Play();
+
+            }
+            if (atualTime > 0)
+            {
+                atualTime -= Time.deltaTime;
+                timerBar.fillAmount = atualTime / totalTime;
+
+            }
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,7 +83,7 @@ public class SimonSays : MonoBehaviour
         fails = 0;
         if (winPanel.activeSelf == true) winPanel.SetActive(false);
         if (losePanel.activeSelf == true) losePanel.SetActive(false);
-        if(startText.activeSelf == true) startText.SetActive(false);
+        if (startText.activeSelf == true) startText.SetActive(false);
 
         CreateSequence(rocks, rocksShow, level + 1);
         StartCoroutine(ShowSequence(showPosition, 1));
@@ -146,8 +156,8 @@ public class SimonSays : MonoBehaviour
         {
             canPlay = true;
             totalTime = level * 5;
-            
-           timer = StartCoroutine(Timer(totalTime));
+
+            timer = StartCoroutine(Timer(totalTime));
             yield break;
         }
 
@@ -160,18 +170,18 @@ public class SimonSays : MonoBehaviour
     {
         timerBar.gameObject.SetActive(true);
         atualTime = totalTime;
-        if(timerBar != null) timerBar.fillAmount = 1;
-       
+        if (timerBar != null) timerBar.fillAmount = 1;
+
         yield return new WaitForSeconds(timer);
         position = 0;
-        fails++;  
+        fails++;
         timerBar.gameObject.SetActive(false);
         if (fails > 2)
         {
             Lose();
             yield break;
         }
-      
+
         errorPanel.SetActive(true);
         StartCoroutine(DisableObject());
 
@@ -189,7 +199,7 @@ public class SimonSays : MonoBehaviour
     [ContextMenu("Win")]
     void Win()
     {
-       // Porta();
+        // Porta();
         gm.puzzle1 = true;
 
         Array.Clear(sequenceShow, 0, sequenceShow.Length);

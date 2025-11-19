@@ -30,13 +30,7 @@ public class CheckRockPuzzle : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
-                if (!simonSays.play)
-                {
-                     Ani.SetTrigger("Button");
-                    simonSays.play = true;
-                    simonSays.Play();
-                    return;
-                }
+                
                 if (simonSays.canPlay) {
                     Ani.SetTrigger("Button");
                     Instantiate(Spawn, Master.transform.position, Quaternion.identity);
