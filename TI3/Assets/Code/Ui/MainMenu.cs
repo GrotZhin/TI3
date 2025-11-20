@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Rendering;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MainMenu : MonoBehaviour
      
     [SerializeField] Slider soundSlider;
     [SerializeField] Slider musicSlider;
+    [SerializeField] AudioMixer audioMixer;
     [SerializeField] GameObject optionMenu;
     public GameObject controls;
 
@@ -43,8 +45,16 @@ public class MainMenu : MonoBehaviour
         sounds = PlayerPrefs.GetFloat("Sounds", 1.0f);
         music = PlayerPrefs.GetFloat("Music", 1.0f);
         controls.SetActive(false);
+        Debug.Log(sounds);
         soundSlider.value = sounds;
+        Debug.Log(soundSlider.value);
         musicSlider.value = music;
+        float temp = Mathf.Log10(sounds) * 20;
+        if (sounds == 0) temp = -60;
+        audioMixer.SetFloat("sfxVolume", temp);
+        temp = Mathf.Log10(music) * 20;
+        if (music == 0) temp = -60;
+        audioMixer.SetFloat("musicVolume", temp);
     }
     public void PlayGame(string sceneName)
     {
@@ -74,13 +84,17 @@ public class MainMenu : MonoBehaviour
     {
         sounds = soundSlider.value;
         // Update sound volume in the game
-        AudioListener.volume = sounds;
+        float temp = Mathf.Log10(sounds) * 20;
+        if (sounds == 0) temp = -60;
+        audioMixer.SetFloat("sfxVolume", temp);
     }
     public void SetMusicVolume()
     {
         music = musicSlider.value;
         // Update music volume in the game
-        AudioListener.volume = music;
+        float temp = Mathf.Log10(music) * 20;
+        if (music == 0) temp = -60;
+        audioMixer.SetFloat("musicVolume", temp);
     }
 
     public void BlockerDo()
@@ -93,7 +107,7 @@ public class MainMenu : MonoBehaviour
                 Blocker.DOAnchorPosX(99999, 0.1f).SetUpdate(true);
             });
     }
-     public void OptionsMenuani()
+    public void OptionsMenuani()
     {
         BlockerDo();
         OMenu.SetActive(true);
@@ -117,7 +131,8 @@ public class MainMenu : MonoBehaviour
 
 
         OMenu.SetActive(false);
-
+        PlayerPrefs.SetFloat("Music",music);
+        PlayerPrefs.SetFloat("Sounds",sounds);
 
     }
     public void Controls()
