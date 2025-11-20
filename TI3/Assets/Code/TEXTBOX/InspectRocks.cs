@@ -42,6 +42,15 @@ public class InspectRocks : MonoBehaviour
             {
                 OpenInspectMenu();
             }
+            if (Input.GetKeyDown(KeyCode.Escape) && inspectActive)
+            {
+                Closemenu();
+            }
+        }
+
+        if (distance > interactRadius)
+        {
+            Rock.SetActive(false);
         }
     }
 
@@ -69,6 +78,23 @@ public class InspectRocks : MonoBehaviour
         else
         {
             Rock.SetActive(true);
+        }
+    }
+
+    void Closemenu()
+    {
+        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+
+        if (manage != null)
+        {
+            manage.Back();
+            manage.OnInspectClosed -= ReleaseInspect;
+
+            inspectActive = false;
+
+            cachedPlayerMovement = player.GetComponent<PlayerMove>();
+            if (cachedPlayerMovement != null)
+                cachedPlayerMovement.enabled = true;
         }
     }
 
