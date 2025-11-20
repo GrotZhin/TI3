@@ -21,6 +21,7 @@ public class ChatBoxManager : MonoBehaviour
     [Header("Player")]
     public PlayerMove playerMove;
 
+
     private string[] lines;
     private int currentLineIndex = 0;
     private Coroutine typingCoroutine;
@@ -55,7 +56,7 @@ public class ChatBoxManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !dialogueSkipped)
         {
-            soundManager.PlaySound(SoundType.Talk);
+            soundManager.PlayTalk(SoundType.Talk);
             ShowNextLine();
             return;
         }

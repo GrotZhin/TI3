@@ -35,17 +35,21 @@ namespace Sfx
             instance = this;
         }
 
+        public static void PlayTalk(SoundType sound, float volume = 1f)
+        {
+            AudioClip[] clips = instance.soundList[(int)sound].Sounds;
+
+            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+            StopSound(sound, volume);
+            instance.musicSource.PlayOneShot(randomClip, volume);
+        }
+
         public static void PlaySound(SoundType sound, float volume = 1f)
         {
             AudioClip[] clips = instance.soundList[(int)sound].Sounds;
             
             AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
             instance.musicSource.PlayOneShot(randomClip, volume);
-          
-            
-           
-            
-
         }
         public static void StopSound(SoundType sound, float volume = 1f)
         {
