@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 public class InspectRocks : MonoBehaviour
 {
@@ -13,9 +13,11 @@ public class InspectRocks : MonoBehaviour
     public string playerTag = "Player";
     public GameObject Rock;
 
-    private static bool inspectActive = false;
+    private bool inspectActive = false;
     private Transform player;
     private static PlayerMove cachedPlayerMovement;
+
+    private bool justOpened = false;
 
     void Start()
     {
@@ -23,10 +25,6 @@ public class InspectRocks : MonoBehaviour
         if (playerObj != null)
         {
             player = playerObj.transform;
-        }
-        else
-        {
-            Debug.LogWarning($"[InspectObject] Nenhum objeto com a tag '{playerTag}' foi encontrado na cena!");
         }
     }
 
@@ -36,21 +34,29 @@ public class InspectRocks : MonoBehaviour
 
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (!inspectActive && distance <= interactRadius)
+       
+        if (!inspectActive)
+        {
+            if (distance <= interactRadius && Input.GetKeyDown(interactKey))
+            {
+                OpenInspectMenu();
+                return;
+            }
+
+            if (distance >interactRadius)
+                Rock.SetActive(false);
+
+            return;
+        }
+
+       
+        if (inspectActive)
         {
             if (Input.GetKeyDown(interactKey))
             {
-                OpenInspectMenu();
+                CloseMenu();
+                return;
             }
-            if (Input.GetKeyDown(KeyCode.Escape) && inspectActive)
-            {
-                Closemenu();
-            }
-        }
-
-        if (distance > interactRadius)
-        {
-            Rock.SetActive(false);
         }
     }
 
@@ -63,15 +69,20 @@ public class InspectRocks : MonoBehaviour
             
             manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
             manage.OpenMenu();
+                    
+          
+            Debug.LogWarning($"[InspectObject] Nenhum objeto com a tag '{playerTag}' foi encontrado na cena!");
+       
             manage.OnInspectClosed += ReleaseInspect;
 
             inspectActive = true;
+            justOpened = true;
 
             cachedPlayerMovement = player.GetComponent<PlayerMove>();
             if (cachedPlayerMovement != null)
                 cachedPlayerMovement.enabled = false;
         }
-        if(InspectUiManager.inspactive = false)
+        if(InspectUiManager.inspactive == false)
         {
             Rock.SetActive(false);
         }
@@ -81,7 +92,7 @@ public class InspectRocks : MonoBehaviour
         }
     }
 
-    void Closemenu()
+    void CloseMenu()
     {
         InspectUiManager manage = FindObjectOfType<InspectUiManager>();
 
@@ -98,7 +109,7 @@ public class InspectRocks : MonoBehaviour
         }
     }
 
-    public static void ReleaseInspect()
+    public void ReleaseInspect()
     {
         inspectActive = false;
         
