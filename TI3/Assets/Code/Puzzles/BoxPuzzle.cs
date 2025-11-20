@@ -28,16 +28,16 @@ public class BoxPuzzle : MonoBehaviour
     void Start()
     {
         winPanel.SetActive(false);
-        // gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (gm.counterBox >= 4)
-        // {
-        //     Win();
-        // }
+        if (gm.counterBox >= 4)
+        {
+            Win();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (holdObject == null)
@@ -61,7 +61,7 @@ public class BoxPuzzle : MonoBehaviour
     void Win()
     {
         Porta();
-        //gm.puzzle2 = true;
+        gm.puzzle2 = true;
         winPanel.SetActive(true);
 
     }
