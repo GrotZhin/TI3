@@ -53,12 +53,13 @@ public class SimonSays : MonoBehaviour
                 Play();
 
             }
-            if (atualTime > 0)
-            {
-                atualTime -= Time.deltaTime;
-                timerBar.fillAmount = atualTime / totalTime;
 
-            }
+        }
+        if (atualTime > 0)
+        {
+            atualTime -= Time.deltaTime;
+            timerBar.fillAmount = atualTime / totalTime;
+
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
