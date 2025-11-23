@@ -37,7 +37,11 @@ public class ChatBoxManager : MonoBehaviour
         chatBoxCanvas.SetActive(false);
         ShowSkipMessage(false);
     }
-
+    private void Start()
+    {
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("ChatBoxManager", 0);
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("SkipDialogue", 0);
+    }
     private void Update()
     {
         if (!dialogueActive) {Chat.DOScaleX(0.8f,0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
@@ -46,6 +50,7 @@ public class ChatBoxManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("SkipDialogue");
             dialogueSkipped = true;
             if (isTyping)
                 CompleteLineInstantly();
@@ -56,6 +61,7 @@ public class ChatBoxManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !dialogueSkipped)
         {
+            if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("ChatBoxManager");
             soundManager.PlayTalk(SoundType.Talk);
             ShowNextLine();
             return;

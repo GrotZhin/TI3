@@ -29,6 +29,7 @@ public class BoxPuzzle : MonoBehaviour
     {
         winPanel.SetActive(false);
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("BoxPuzzle", 0);
     }
 
     // Update is called once per frame
@@ -48,6 +49,7 @@ public class BoxPuzzle : MonoBehaviour
 
                     if (hit.collider.CompareTag("Push"))
                     {
+                        if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("BoxPuzzle");
                         Debug.Log("colidiu");
                         Pickup(hit.collider.gameObject);
                     }
