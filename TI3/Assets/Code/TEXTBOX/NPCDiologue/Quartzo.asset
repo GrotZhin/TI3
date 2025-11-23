@@ -25,3 +25,4 @@ MonoBehaviour:
     ???
   - Em troca te falo mais sobre mim !!!
   - EU SOU LEGAL EU JURO !!
+  npcVoice: {fileID: 11400000, guid: fa13430ca559afd4ba0c483256a99508, type: 2}

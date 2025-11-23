@@ -23,3 +23,4 @@ MonoBehaviour:
   - Bora la vai ser legal, so arrajar umas paradinhas de luz ali e bora pra frente,
     vamo num pe e voltamos em outro.
   - ATE te falo um pouco de mim, sou um cara bem tranquilo
+  npcVoice: {fileID: 11400000, guid: 73004fe6360abb54484307db30063c70, type: 2}
