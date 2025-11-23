@@ -21,3 +21,4 @@ MonoBehaviour:
   - Mas na calma aparentemente achei um ajudante, certo ?
   - Acha que consegue me ajudar a resolver esse problema ?
   - Se me ajudar te ensino a ser um pouco mais calmo
+  npcVoice: {fileID: 11400000, guid: 314489701782fa7448acd9c0d8afc921, type: 2}

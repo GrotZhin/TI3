@@ -51,7 +51,9 @@ public class PlayerMove : MonoBehaviour
     {
         moveInput = transform.forward * ctx.ReadValue<Vector2>().y + transform.right * ctx.ReadValue<Vector2>().x;
         Ani.SetBool("Walking", true);
-        soundManager.PlaySound(SoundType.Walk);
+
+        soundManager.PlayFootstep(SoundType.Walk);
+
         Vector3 dir = new Vector3(moveInput.x, 0, moveInput.y);
         Quaternion rot = Quaternion.LookRotation(moveInput);
         bixin.transform.rotation = Quaternion.Lerp(bixin.transform.rotation, rot,1);
@@ -61,7 +63,8 @@ public class PlayerMove : MonoBehaviour
     {
         moveInput = Vector3.zero;
         Ani.SetBool("Walking", false);
-        soundManager.StopSound(SoundType.Walk);
+
+        soundManager.StopFootstep();
     }
     public void SetCollisionStatus(bool colliding)
     {

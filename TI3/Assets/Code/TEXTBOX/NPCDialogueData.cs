@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NPCDialogue", menuName = "Dialogue/NPCDialogue")]
+[CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue/NPC Dialogue")]
 public class NPCDialogueData : ScriptableObject
 {
     public string npcName;
@@ -9,4 +9,6 @@ public class NPCDialogueData : ScriptableObject
 
     [TextArea(3, 10)]
     public string[] dialogueLines;
+
+    public NPCVoice npcVoice;
 }

@@ -43772,7 +43772,6 @@ MonoBehaviour:
   - name: Talk
     sounds:
     - {fileID: 8300000, guid: 7aae53648f29ce24884c6fb3e9b2db4a, type: 3}
-  musicSource: {fileID: 1659093572}
 --- !u!4 &1659093574
 Transform:
   m_ObjectHideFlags: 0
