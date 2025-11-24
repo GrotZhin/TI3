@@ -10,14 +10,13 @@ public class BoxCheck : MonoBehaviour
     Material materialPlaca;
     [SerializeField] GameObject identifier;
     GM gm;
-    BoxCount boxCount;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
-        boxCount = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCount>();
+       
         renderer = GetComponent<MeshRenderer>();
         materialPlaca = renderer.material;
     }
@@ -43,7 +42,7 @@ public class BoxCheck : MonoBehaviour
                 {
                     identifier.SetActive(false); 
                    
-                    boxCount.counterBox++;
+                    gm.counterBox++;
                     
                 }
             }
@@ -63,7 +62,7 @@ public class BoxCheck : MonoBehaviour
                 if (materialAtual.name.Equals(materialPlaca.name))
                 {
                     identifier.SetActive(true);
-                    boxCount.counterBox--;
+                    gm.counterBox--;
                     
                 }
             }

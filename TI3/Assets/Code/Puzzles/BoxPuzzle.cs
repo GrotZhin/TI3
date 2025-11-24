@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BoxPuzzle : MonoBehaviour
 {
-    BoxCount boxCount;
+   
     GM gm;
     [SerializeField] float power;
     [SerializeField] float pickupRange;
@@ -30,13 +30,13 @@ public class BoxPuzzle : MonoBehaviour
     {
         winPanel.SetActive(false);
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
-        boxCount = GetComponent<BoxCount>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (boxCount.counterBox >= 4)
+        if (gm.counterBox >= 4)
         {
             Win();
         }
