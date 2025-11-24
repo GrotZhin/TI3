@@ -4991,7 +4991,6 @@ MonoBehaviour:
   - name: Talk
     sounds:
     - {fileID: 8300000, guid: 7aae53648f29ce24884c6fb3e9b2db4a, type: 3}
-  musicSource: {fileID: 1338686267}
 --- !u!4 &1338686269
 Transform:
   m_ObjectHideFlags: 0
@@ -6073,6 +6072,10 @@ PrefabInstance:
       propertyPath: Ani
       value: 
       objectReference: {fileID: 1751678654}
+    - target: {fileID: 101690292211640087, guid: bc2fe42672793564e8a2906db3223aa3, type: 3}
+      propertyPath: Spawn
+      value: 
+      objectReference: {fileID: 6915200894223091964, guid: f1daa7bad7d9dce4587c865af2b0f278, type: 3}
     - target: {fileID: 101690292211640087, guid: bc2fe42672793564e8a2906db3223aa3, type: 3}
       propertyPath: bixin
       value: 

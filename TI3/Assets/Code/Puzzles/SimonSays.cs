@@ -128,6 +128,7 @@ public class SimonSays : MonoBehaviour
             timerBar.gameObject.SetActive(false);
             StopCoroutine(timer);
             level++;
+            canPlay = false;
             position = 0;
             if (level > 3)
             {
