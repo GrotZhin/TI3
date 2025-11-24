@@ -16,9 +16,9 @@ MonoBehaviour:
   nameColor: {r: 0.9306335, g: 0.4449537, b: 0.9528302, a: 1}
   textColor: {r: 0.5899548, g: 0.23638305, b: 0.6037736, a: 1}
   dialogueLines:
-  - Problemas, sempre com calma e serenidade que se resolve certo ?
-  - Estava quebrando a cabeca para resolver esse problema....
-  - Mas na calma aparentemente achei um ajudante, certo ?
-  - Acha que consegue me ajudar a resolver esse problema ?
-  - Se me ajudar te ensino a ser um pouco mais calmo
+  - Problemas, sempre com calma e serenidade que se resolve certo?
+  - "Estava quebrando a cabe\xE7a para resolver esse problema...."
+  - Mas na calma aparentemente achei um ajudante, certo?
+  - Acha que consegue me ajudar a resolver esse problema de luz?
+  - Se me ajudar te ensino a ser um pouco mais calmo.
   npcVoice: {fileID: 11400000, guid: 314489701782fa7448acd9c0d8afc921, type: 2}
