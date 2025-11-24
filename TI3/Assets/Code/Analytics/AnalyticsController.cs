@@ -46,6 +46,11 @@ public class AnalyticsController : MonoBehaviour
     void OnSceneUnloaded(Scene scene)
     {
         CompleteAnly("SceneLoad_" + scene.name);
+        if(scene.buildIndex != 0){
+            CompleteAllAnlyData();
+            Send();
+            ClearAllData();
+        }
     }
     public int StartAnly(string name, float value)
     {
@@ -144,5 +149,10 @@ public class AnalyticsController : MonoBehaviour
             UnityWebRequest www = UnityWebRequest.Post(url, form);
             www.SendWebRequest();
         }
+    }
+    void ClearAllData()
+    {
+        anlyDataList.Clear();
+        id = 0;
     }
 }
