@@ -14,6 +14,7 @@ public class BoxPuzzle : MonoBehaviour
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject holdObject;
     [SerializeField] GameObject bixin;
+    [SerializeField] Animator Ani;
     Rigidbody holdObjectRb;
     [SerializeField] Transform carryPoint;
     [SerializeField] Transform dropPoint;
@@ -30,7 +31,7 @@ public class BoxPuzzle : MonoBehaviour
     {
         winPanel.SetActive(false);
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
-       
+        Ani = bixin.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,6 +58,7 @@ public class BoxPuzzle : MonoBehaviour
             }
             else Drop();
         }
+        
 
     }
     [ContextMenu("Win")]
@@ -71,7 +73,7 @@ public class BoxPuzzle : MonoBehaviour
     {
         if (hold.GetComponent<Rigidbody>() != null)
         {
-
+            Ani.SetBool("HoldingBox",true);
             holdObject = hold;
             holdObjectRb = hold.GetComponent<Rigidbody>();
 
@@ -80,15 +82,17 @@ public class BoxPuzzle : MonoBehaviour
             holdObject.transform.parent = carryPoint;
 
         }
-
     }
     public void Drop()
     {
+        
         if (drop)
         {
-
+            
             if (holdObject != null)
             {
+                Ani.SetTrigger("BoxTrow");
+                Ani.SetBool("HoldingBox",false);
                 playerMove.move.Disable();
                 StartCoroutine(EnableMove());
                 holdObjectRb.isKinematic = false;
@@ -105,7 +109,7 @@ public class BoxPuzzle : MonoBehaviour
             if (holdObject != null)
             {
                 playerMove.move.Disable();
-
+                Ani.SetBool("HoldingBox",false);
                 StartCoroutine(EnableMove());
                 //holdObject.transform.position = dropPoint.position;
                 holdObject.transform.parent = null;
@@ -114,6 +118,7 @@ public class BoxPuzzle : MonoBehaviour
                 holdObject = null;
                 holdObjectRb = null;
             }
+            
         }
     }
     IEnumerator EnableMove()
