@@ -16,6 +16,7 @@ MonoBehaviour:
   nameColor: {r: 1, g: 0.3443396, b: 0.7953612, a: 1}
   textColor: {r: 0.5188679, g: 0.17866677, b: 0.38740066, a: 1}
   dialogueLines:
-  - Eu ACHO que temos que ajustar as caixas com as cores certas .....
-  - Nao tenho carteza.
-  - Desculpa nao sei tanto de cores assim .....
+  - "Eu ACHO que temos que acertar o padr\xE3o da tela ....."
+  - "Desculpa n\xE3o sei tanto de cores assim ....."
+  - "N\xE3o consigo chegar nos cristais de manh\xE3."
+  npcVoice: {fileID: 11400000, guid: fa13430ca559afd4ba0c483256a99508, type: 2}

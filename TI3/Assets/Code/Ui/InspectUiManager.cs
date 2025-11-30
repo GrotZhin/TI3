@@ -73,7 +73,7 @@ public class InspectUiManager : MonoBehaviour
         MainUi.SetActive(true);
         inspactive = false;
 
-      
+        
         OnInspectClosed?.Invoke();
     }
 

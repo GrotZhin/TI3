@@ -58,7 +58,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.23307717, y: 0.041803833, z: 0.008355564, w: 0}
+      - m_Value: {x: 0.8396226, y: 0.24951048, z: 0.6026114, w: 0}
         m_Name: Col
         m_Overridden: 1
     m_Uint:

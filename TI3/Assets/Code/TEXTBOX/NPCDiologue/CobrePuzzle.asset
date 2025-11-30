@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aa5dc11a6ebff44cb80520f422475c1, type: 3}
-  m_Name: Cobre
+  m_Name: CobrePuzzle
   m_EditorClassIdentifier: 
   npcName: Kobe
   nameColor: {r: 0.9811321, g: 0.75597614, b: 0.35635456, a: 1}
   textColor: {r: 0.8207547, g: 0.5639385, b: 0.19744569, a: 1}
   dialogueLines:
-  - EAI, COMO VAI ??? TUDO BEM ???
-  - Vi que voce ta ajudando a galera ai, acha que consegue me dar uma mao ?
-  - 'AHHH QUE DEMAIS !!! '
-  - SABIA QUE PODIA CONTAR COM VOCE !!!
-  - Bora la vai ser legal, so arrajar umas paradinhas de luz ali e bora pra frente,
-    vamo num pe e voltamos em outro.
-  - ATE te falo um pouco de mim, sou um cara bem tranquilo
+  - AOOOOOOBAAAAAAA !!
+  - "Cheguei aqui antes n\xE9 ?!!!"
+  - "Demais essas caixas n\xE9...."
+  - "Acho que d\xE1 pra coloc\xE1-las nas plataformas ali ...."
+  npcVoice: {fileID: 11400000, guid: 73004fe6360abb54484307db30063c70, type: 2}

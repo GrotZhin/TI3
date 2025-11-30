@@ -9,6 +9,8 @@ public class GlobalInputBlocker : MonoBehaviour
     private InputAction qAction;
     private InputAction escAction;
 
+    private KeyCode[] legacyKeys = { KeyCode.Q, KeyCode.Escape, KeyCode.Space };
+
     void Start()
     {
         if (playerInput != null)
@@ -20,10 +22,28 @@ public class GlobalInputBlocker : MonoBehaviour
 
     void Update()
     {
-        if (!GlobalKeyBlocker.BlockKeys) return;
+        if (!GlobalKeyBlocker.BlockKeys)
+        {
+            RestoreActions();
+            return;
+        }
 
-        Input.ResetInputAxes();
+        BlockLegacyKeys();
 
+        DisableNewInputActions();
+    }
+
+    void BlockLegacyKeys()
+    {
+        foreach (var key in legacyKeys)
+        {
+            if (Input.GetKeyDown(key))
+                Input.ResetInputAxes();
+        }
+    }
+
+    void DisableNewInputActions()
+    {
         if (qAction != null && qAction.enabled)
             qAction.Disable();
 
@@ -31,12 +51,14 @@ public class GlobalInputBlocker : MonoBehaviour
             escAction.Disable();
     }
 
-    void LateUpdate()
-    {
-        if (GlobalKeyBlocker.BlockKeys) return;
 
-        if (qAction != null && !qAction.enabled) qAction.Enable();
-        if (escAction != null && !escAction.enabled) escAction.Enable();
+    void RestoreActions()
+    {
+        if (qAction != null && !qAction.enabled)
+            qAction.Enable();
+
+        if (escAction != null && !escAction.enabled)
+            escAction.Enable();
     }
 
     private InputAction FindActionByKey(Key key)
@@ -47,7 +69,9 @@ public class GlobalInputBlocker : MonoBehaviour
             {
                 foreach (var binding in action.bindings)
                 {
-                    if (binding.isComposite || binding.isPartOfComposite) continue;
+                    if (binding.isComposite || binding.isPartOfComposite)
+                        continue;
+
                     if (binding.path.Contains(key.ToString()))
                         return action;
                 }

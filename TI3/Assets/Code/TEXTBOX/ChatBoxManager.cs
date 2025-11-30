@@ -8,7 +8,11 @@ public class ChatBoxManager : MonoBehaviour
 {
     public Transform Chat;
     public static ChatBoxManager Instance;
+
     public TextMeshProUGUI skipMessageText;
+
+    private AudioSource voiceSource;
+    private NPCVoice currentVoice;
 
     [Header("UI")]
     public GameObject chatBoxCanvas;
@@ -34,6 +38,10 @@ public class ChatBoxManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        voiceSource = gameObject.AddComponent<AudioSource>();
+        voiceSource.playOnAwake = false;
+
         chatBoxCanvas.SetActive(false);
         ShowSkipMessage(false);
     }
@@ -44,8 +52,10 @@ public class ChatBoxManager : MonoBehaviour
     }
     private void Update()
     {
-        if (!dialogueActive) {Chat.DOScaleX(0.8f,0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
-        return;
+        if (!dialogueActive)
+        {
+            Chat.DOScaleX(0.8f, 0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -61,8 +71,6 @@ public class ChatBoxManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !dialogueSkipped)
         {
-            if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("ChatBoxManager");
-            soundManager.PlayTalk(SoundType.Talk);
             ShowNextLine();
             return;
         }
@@ -70,14 +78,14 @@ public class ChatBoxManager : MonoBehaviour
 
     public void StartDialogue(NPCDialogueData npcData)
     {
-        Chat.DOScaleX(1.5f,0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
-        Chat.DOScaleX(1f,0.3f).SetUpdate(true);
+        Chat.DOScaleX(1.5f, 0.3f).SetEase(Ease.InOutBounce).SetUpdate(true);
+        Chat.DOScaleX(1f, 0.3f).SetUpdate(true);
+
         dialogueActive = true;
         dialogueSkipped = false;
+
         chatBoxCanvas.SetActive(true);
         ShowSkipMessage(true);
-        
-        soundManager.PlaySound(SoundType.Talk);
 
         GlobalKeyBlocker.BlockKeys = true;
 
@@ -87,6 +95,8 @@ public class ChatBoxManager : MonoBehaviour
         nameText.text = npcData.npcName;
         nameText.color = npcData.nameColor;
         dialogueText.color = npcData.textColor;
+
+        currentVoice = npcData.npcVoice;
 
         lines = npcData.dialogueLines;
         currentLineIndex = 0;
@@ -111,7 +121,6 @@ public class ChatBoxManager : MonoBehaviour
             return;
         }
 
-
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
@@ -128,6 +137,10 @@ public class ChatBoxManager : MonoBehaviour
         foreach (char c in line)
         {
             dialogueText.text += c;
+
+            if (currentVoice != null && char.IsLetterOrDigit(c))
+                PlayBlip();
+
             yield return new WaitForSeconds(typingSpeed);
         }
 
@@ -139,10 +152,8 @@ public class ChatBoxManager : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        if (currentLineIndex > 0 && currentLineIndex <= lines.Length)
-            dialogueText.text = lines[currentLineIndex - 1];
+        dialogueText.text = lines[currentLineIndex - 1];
         isTyping = false;
-        
     }
 
     public void ForceEndDialogue()
@@ -161,12 +172,24 @@ public class ChatBoxManager : MonoBehaviour
         GlobalKeyBlocker.BlockKeys = false;
 
         OnDialogueEnd?.Invoke();
-        
     }
 
     public void ShowSkipMessage(bool show)
     {
         if (skipMessageText != null)
             skipMessageText.gameObject.SetActive(show);
+    }
+
+    private void PlayBlip()
+    {
+        if (currentVoice == null || currentVoice.blips.Length == 0)
+            return;
+
+        AudioClip clip = currentVoice.blips[Random.Range(0, currentVoice.blips.Length)];
+
+        voiceSource.pitch = Random.Range(currentVoice.pitchMin, currentVoice.pitchMax);
+        voiceSource.volume = currentVoice.volume;
+
+        voiceSource.PlayOneShot(clip);
     }
 }

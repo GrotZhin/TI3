@@ -1,89 +1,92 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Sfx
 {
-
     public enum SoundType
-
     {
         AmethystPopUp,
         Sparkles,
         Menu,
         Walk,
-        Talk,
-
+        Talk
     }
 
-    [ExecuteInEditMode]
     public class soundManager : MonoBehaviour
     {
+        public static soundManager Instance { get; private set; }
 
         [SerializeField] private SoundList[] soundList;
-        public static soundManager instance;
-       
-        public AudioSource musicSource;
 
-      
+        private AudioSource footstepSource;
+        private AudioSource musicSource;
+        private AudioSource sfxSource;
 
-       
-
-        public void Awake()
+        private void Awake()
         {
-            instance = this;
-        }
-
-        public static void PlayTalk(SoundType sound, float volume = 1f)
-        {
-            AudioClip[] clips = instance.soundList[(int)sound].Sounds;
-
-            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-            StopSound(sound, volume);
-            instance.musicSource.PlayOneShot(randomClip, volume);
-        }
-
-        public static void PlaySound(SoundType sound, float volume = 1f)
-        {
-            AudioClip[] clips = instance.soundList[(int)sound].Sounds;
-            
-            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-            instance.musicSource.PlayOneShot(randomClip, volume);
-        }
-        public static void StopSound(SoundType sound, float volume = 1f)
-        {
-            AudioClip[] clips = instance.soundList[(int)sound].Sounds;
-
-            AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-
-            instance.musicSource.Stop();
-            
-            
-           
-            
-
-        }
-#if UNITY_EDITOR
-        private void OnEnable()
-        {
-            string[] names = Enum.GetNames(typeof(SoundType));
-            Array.Resize(ref soundList, names.Length);
-            for (int i = 0; i < soundList.Length; i++)
+            if (Instance != null && Instance != this)
             {
-                soundList[i].name = names[i];
+                Destroy(gameObject);
+                return;
             }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.loop = true;
+
+            sfxSource = gameObject.AddComponent<AudioSource>();
+            sfxSource.playOnAwake = false;
+            sfxSource.spatialBlend = 0;
+
+            footstepSource = gameObject.AddComponent<AudioSource>();
+            footstepSource.loop = true;
+            footstepSource.playOnAwake = false;
+            footstepSource.spatialBlend = 0;
         }
-    #endif
-    
+
+        public static void PlaySound(SoundType type, float volume = 1f)
+        {
+            var list = Instance.soundList[(int)type].sounds;
+            if (list == null || list.Length == 0) return;
+
+            var clip = list[UnityEngine.Random.Range(0, list.Length)];
+            Instance.sfxSource.PlayOneShot(clip, volume);
+        }
+
+        public static void PlayMusic(AudioClip clip, float volume = 1f)
+        {
+            Instance.musicSource.clip = clip;
+            Instance.musicSource.volume = volume;
+            Instance.musicSource.Play();
+        }
+
+        public static void PlayFootstep(SoundType type, float volume = 1f)
+        {
+            var list = Instance.soundList[(int)type].sounds;
+            if (list == null || list.Length == 0) return;
+
+            AudioClip clip = list[UnityEngine.Random.Range(0, list.Length)];
+
+            Instance.footstepSource.pitch = UnityEngine.Random.Range(0.9f, 1.05f);
+            Instance.footstepSource.clip = clip;
+            Instance.footstepSource.volume = volume;
+            Instance.footstepSource.Play();
+        }
+
+        public static void StopFootstep()
+        {
+            if (Instance.footstepSource.isPlaying)
+                Instance.footstepSource.Stop();
+        }
+
     }
-    
-    
+
     [Serializable]
     public struct SoundList
     {
-        public AudioClip[] Sounds {get => sounds;}
-        [HideInInspector] public string name;
-        [SerializeField] public AudioClip[] sounds;
+        public string name;
+        public AudioClip[] sounds;
     }
 }
