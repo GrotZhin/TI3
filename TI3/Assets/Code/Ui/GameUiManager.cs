@@ -192,7 +192,9 @@ public class GameUiManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MenuPrincipal");
+        
     }
     async void SunAni()
     {
