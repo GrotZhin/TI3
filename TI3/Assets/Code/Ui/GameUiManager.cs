@@ -79,6 +79,7 @@ public class GameUiManager : MonoBehaviour
             music.value = value;
             music.onValueChanged.AddListener(SetMusic);
         }
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("DayNightToggle", 0);
     }
 
     // Update is called once per frame
@@ -93,6 +94,7 @@ public class GameUiManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("DayNightToggle");
                 DNTimer = DNCooldown;
 
                 if (GM.DayTime)

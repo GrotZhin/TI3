@@ -15,6 +15,7 @@ public class RotateMirrorX : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("RotateMirrorX", 0);
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class RotateMirrorX : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
+                if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("RotateMirrorX");
                 if (!rotation)
                 {
                     rotation = true;

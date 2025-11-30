@@ -19,7 +19,7 @@ public class Push : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
-
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("Push", 0);
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class Push : MonoBehaviour
             {
                 if (!isPushing)
                 {
+                    if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("Push");
                     isPushing = true;
                   boxPuzzle.Pickup(this.gameObject);
                 }

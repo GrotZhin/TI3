@@ -18,6 +18,7 @@ public class CheckRockPuzzle : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
+        if(AnalyticsController.Self != null) AnalyticsController.Self.StartAnly("RockPuzzle", 0);
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class CheckRockPuzzle : MonoBehaviour
             {
                 
                 if (simonSays.canPlay) {
+                    if(AnalyticsController.Self != null) AnalyticsController.Self.UpdateAnlyValue("RockPuzzle");
                     Ani.SetTrigger("Button");
                     Instantiate(Spawn, Master.transform.position, Quaternion.identity);
                     simonSays.RockObject(this.gameObject);
