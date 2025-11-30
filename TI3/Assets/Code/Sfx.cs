@@ -18,9 +18,9 @@ namespace Sfx
 
         [SerializeField] private SoundList[] soundList;
 
-        private AudioSource footstepSource;
-        private AudioSource musicSource;
-        private AudioSource sfxSource;
+        public AudioSource footstepSource;
+    
+        public AudioSource sfxSource;
 
         private void Awake()
         {
@@ -33,14 +33,12 @@ namespace Sfx
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            musicSource = gameObject.AddComponent<AudioSource>();
-            musicSource.loop = true;
-
-            sfxSource = gameObject.AddComponent<AudioSource>();
+         
+            //sfxSource = gameObject.AddComponent<AudioSource>();
             sfxSource.playOnAwake = false;
             sfxSource.spatialBlend = 0;
 
-            footstepSource = gameObject.AddComponent<AudioSource>();
+           // footstepSource = gameObject.AddComponent<AudioSource>();
             footstepSource.loop = true;
             footstepSource.playOnAwake = false;
             footstepSource.spatialBlend = 0;
@@ -55,12 +53,6 @@ namespace Sfx
             Instance.sfxSource.PlayOneShot(clip, volume);
         }
 
-        public static void PlayMusic(AudioClip clip, float volume = 1f)
-        {
-            Instance.musicSource.clip = clip;
-            Instance.musicSource.volume = volume;
-            Instance.musicSource.Play();
-        }
 
         public static void PlayFootstep(SoundType type, float volume = 1f)
         {

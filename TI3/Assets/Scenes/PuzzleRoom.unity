@@ -535,11 +535,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86acb4b0873f6084d8317ae84a7a54b6, type: 3}
   m_PrefabInstance: {fileID: 2112839920}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &173638388 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2828054478909954655, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-  m_PrefabInstance: {fileID: 1033825139}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &181696761 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6816608504908240513, guid: 7ae4c041baaf6434c985423c22566aa6, type: 3}
@@ -1112,6 +1107,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84b8f0492af59954194f23469f3e2c59, type: 3}
+--- !u!1 &387595308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6981514106909868911, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+  m_PrefabInstance: {fileID: 1699669632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &388744813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1567,6 +1567,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae4c041baaf6434c985423c22566aa6, type: 3}
+--- !u!1 &467778267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2828054478909954655, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+  m_PrefabInstance: {fileID: 1699669632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &485519861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2202,11 +2207,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae4c041baaf6434c985423c22566aa6, type: 3}
---- !u!1 &602660053 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6981514106909868911, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-  m_PrefabInstance: {fileID: 1033825139}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &615615981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3492,11 +3492,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 977ec109ae0adbe4eb98f75ffe5e6e7c, type: 3}
   m_PrefabInstance: {fileID: 572926046}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &971015045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 210274046633579194, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-  m_PrefabInstance: {fileID: 1033825139}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &986210350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,93 +3615,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae4c041baaf6434c985423c22566aa6, type: 3}
---- !u!1001 &1033825139
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 210274046633579194, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_Name
-      value: RoseQuartz
-      objectReference: {fileID: 0}
-    - target: {fileID: 210274046633579194, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: Rock
-      value: 
-      objectReference: {fileID: 971015045}
-    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: rockMetalText
-      value: ' Quartzo'
-      objectReference: {fileID: 0}
-    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: informativeBody
-      value: "Geralmente n\xE3o forma cristais pontudos, sendo encontrado em blocos
-        maci\xE7os."
-      objectReference: {fileID: 0}
-    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: informativeHeader
-      value: "F\xF3rmula: SiO\u2082\nCor: Rosa claro a rosa intenso\nBrilho: V\xEDtreo\nOrigem
-        do Nome: Do termo quartzo + refer\xEAncia direta \xE0 cor rosa.\n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 342072274424583670, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.553
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2828054478909954655, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
-      propertyPath: m_TagString
-      value: Colectable
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
 --- !u!1 &1047469914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 977ec109ae0adbe4eb98f75ffe5e6e7c, type: 3}
@@ -4078,13 +3986,13 @@ MonoBehaviour:
   - {fileID: 1360673709}
   - {fileID: 1445075210}
   - {fileID: 219125916}
-  - {fileID: 173638388}
+  - {fileID: 467778267}
   NightProps:
   - {fileID: 2117730469}
   - {fileID: 321043503}
   - {fileID: 71703279}
   - {fileID: 1011806401}
-  - {fileID: 602660053}
+  - {fileID: 387595308}
   - {fileID: 986210350}
 --- !u!4 &1106356594
 Transform:
@@ -4935,7 +4843,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 562308413dc5ca74eaee5b2312d373d6, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d81aed4dc5590c5469e7aec7ea33d719, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d81aed4dc5590c5469e7aec7ea33d719, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5054,6 +4962,8 @@ MonoBehaviour:
   - name: Talk
     sounds:
     - {fileID: 8300000, guid: 7aae53648f29ce24884c6fb3e9b2db4a, type: 3}
+  footstepSource: {fileID: 1338686267}
+  sfxSource: {fileID: 1338686267}
 --- !u!4 &1338686269
 Transform:
   m_ObjectHideFlags: 0
@@ -6361,6 +6271,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3640803270955003551, guid: c29074fff58ee4041a690b9f95fa1556, type: 3}
   m_PrefabInstance: {fileID: 1420113582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1699669632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 210274046633579194, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_Name
+      value: RoseQuartz
+      objectReference: {fileID: 0}
+    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: Rock
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: rockMetalText
+      value: ' Quartzo'
+      objectReference: {fileID: 0}
+    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: informativeBody
+      value: "Geralmente n\xE3o forma cristais pontudos, sendo encontrado em blocos
+        maci\xE7os."
+      objectReference: {fileID: 0}
+    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: informativeHeader
+      value: "F\xF3rmula: SiO\u2082\nCor: Rosa claro a rosa intenso\nBrilho: V\xEDtreo\nOrigem
+        do Nome: Do termo quartzo + refer\xEAncia direta \xE0 cor rosa.\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828054478909954655, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_TagString
+      value: Colectable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
 --- !u!4 &1701522741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6816608504908240513, guid: 7ae4c041baaf6434c985423c22566aa6, type: 3}
@@ -8764,4 +8753,4 @@ SceneRoots:
   - {fileID: 747095200}
   - {fileID: 191233404}
   - {fileID: 58747240}
-  - {fileID: 1033825139}
+  - {fileID: 1699669632}

@@ -96,8 +96,8 @@ public class BoxPuzzle : MonoBehaviour
                 Ani.SetTrigger("BoxTrow");
                 Ani.SetBool("HoldingBox",false);
                 playerMove.move.Disable();
-                StartCoroutine(EnableMove());
                 holdObjectRb.isKinematic = false;
+                StartCoroutine(EnableMove());
                 holdObject.transform.position = dropPoint.position;
                 holdObject.transform.parent = null;
                 holdObject = null;
