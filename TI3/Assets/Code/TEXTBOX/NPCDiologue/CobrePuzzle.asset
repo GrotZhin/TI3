@@ -16,8 +16,8 @@ MonoBehaviour:
   nameColor: {r: 0.9811321, g: 0.75597614, b: 0.35635456, a: 1}
   textColor: {r: 0.8207547, g: 0.5639385, b: 0.19744569, a: 1}
   dialogueLines:
-  - AOOOOOOBAAAAAAA !!
-  - "Cheguei aqui antes n\xE9 ?!!!"
-  - "Demais essas caixas n\xE9...."
-  - "Acho que d\xE1 pra coloc\xE1-las nas plataformas ali ...."
+  - AOOOOOOBAAAAAAA!!
+  - "Cheguei aqui antes n\xE9?!!!"
+  - "Demais essas caixas n\xE9..."
+  - "Acho que d\xE1 pra coloc\xE1-las nas plataformas ali..."
   npcVoice: {fileID: 11400000, guid: 73004fe6360abb54484307db30063c70, type: 2}
