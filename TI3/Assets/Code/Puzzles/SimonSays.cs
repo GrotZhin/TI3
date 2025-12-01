@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SimonSays : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class SimonSays : MonoBehaviour
 
     [SerializeField] GameObject[] rocks;
     [SerializeField] GameObject[] rocksShow;
-    [SerializeField] GameObject[] sequence;
-    [SerializeField] GameObject[] sequenceShow;
+    [SerializeField] List<GameObject> sequence;
+    [SerializeField] List<GameObject> sequenceShow;
     [SerializeField] Image timerBar;
     float totalTime;
     float atualTime;
@@ -67,16 +68,23 @@ public class SimonSays : MonoBehaviour
     void CreateSequence(GameObject[] rocks, GameObject[] rocksShow, int limit)
     {
 
-        sequence = new GameObject[limit];
-        sequenceShow = new GameObject[limit];
+        // sequence = new GameObject[limit];
+        // sequenceShow = new GameObject[limit];
 
-        for (int i = 0; i < sequence.Length; i++)
+        for (int i = 0; i < limit + 1; i++)
         {
             int rd = UnityEngine.Random.Range(0, rocks.Length);
-            sequence[i] = rocks[rd];
-            sequenceShow[i] = rocksShow[rd];
+            sequence.Add(rocks[rd]);
+            sequenceShow.Add(rocksShow[rd]);
+           
 
         }
+    }
+    void AddSequence(GameObject[] rocks, GameObject[] rockShow)
+    {
+        var rd = UnityEngine.Random.Range(0,rocks.Length);
+        sequence.Add(rocks[rd]);
+        sequenceShow.Add(rockShow[rd]);
     }
 
     public void Play()
@@ -86,7 +94,7 @@ public class SimonSays : MonoBehaviour
         if (losePanel.activeSelf == true) losePanel.SetActive(false);
         if (startText.activeSelf == true) startText.SetActive(false);
 
-        CreateSequence(rocks, rocksShow, level + 1);
+        CreateSequence(rocks, rocksShow, level);
         StartCoroutine(ShowSequence(showPosition, 1));
     }
     public void RockObject(GameObject rock)
@@ -95,7 +103,7 @@ public class SimonSays : MonoBehaviour
         CheckSequence(rock, sequence);
     }
 
-    void CheckSequence(GameObject rock, GameObject[] sequence)
+    void CheckSequence(GameObject rock, List<GameObject>sequence)
     {
 
         if (rock == sequence[position])
@@ -122,7 +130,7 @@ public class SimonSays : MonoBehaviour
             return;
         }
 
-        if (position == sequence.Length)
+        if (position == sequence.Count)
         {
             // se acertar a sequencia toda vem pra ca
             timerBar.gameObject.SetActive(false);
@@ -136,7 +144,7 @@ public class SimonSays : MonoBehaviour
                 return;
             }
             correctPanel.SetActive(true);
-            CreateSequence(rocks, rocksShow, level + 1);
+            AddSequence(rocks, rocksShow);
             StartCoroutine(DisableObject());
         }
     }
@@ -154,7 +162,7 @@ public class SimonSays : MonoBehaviour
         yield return new WaitForSeconds(time);
         canPlay = false;
 
-        if (pos >= sequenceShow.Length)
+        if (pos >= sequenceShow.Count)
         {
             canPlay = true;
             totalTime = level * 5;
@@ -203,9 +211,9 @@ public class SimonSays : MonoBehaviour
     {
         // Porta();
         gm.puzzle1 = true;
-
-        Array.Clear(sequenceShow, 0, sequenceShow.Length);
-        Array.Clear(sequence, 0, sequence.Length);
+        sequence.Clear();
+        sequenceShow.Clear();
+        
         level = 1;
         play = false;
 
@@ -214,8 +222,8 @@ public class SimonSays : MonoBehaviour
     }
     void Lose()
     {
-        Array.Clear(sequenceShow, 0, sequenceShow.Length);
-        Array.Clear(sequence, 0, sequence.Length);
+        sequence.Clear();
+        sequenceShow.Clear();
         level = 1;
         play = false;
 
