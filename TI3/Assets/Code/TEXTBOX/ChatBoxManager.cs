@@ -24,8 +24,6 @@ public class ChatBoxManager : MonoBehaviour
 
     [Header("Player")]
     public PlayerMove playerMove;
-
-
     private string[] lines;
     private int currentLineIndex = 0;
     private Coroutine typingCoroutine;
