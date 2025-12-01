@@ -47,9 +47,9 @@ public class AnalyticsController : MonoBehaviour
     {
         CompleteAnly("SceneLoad_" + scene.name);
         if(scene.buildIndex != 0){
-            CompleteAllAnlyData();
-            Send();
-            ClearAllData();
+            CompleteAllAnlyData(0);
+            Send(0);
+            ClearAllData(0);
         }
     }
     public int StartAnly(string name, float value)
@@ -154,5 +154,49 @@ public class AnalyticsController : MonoBehaviour
     {
         anlyDataList.Clear();
         id = 0;
+    }
+    void Send(int notTotalGameSession){
+        AnlyList allData = GetAllAnlyData();
+        foreach (AnlyData item in allData.anlyList)
+        {
+            if (item.name != "GameLaunch")
+            {
+                WWWForm form = new();
+                form.AddField("entry.1518256880", SystemInfo.deviceUniqueIdentifier);
+                form.AddField("entry.1388893675", item.name);
+                form.AddField("entry.952154051", item.value.ToString());
+                if (item.endTime == DateTime.MinValue || item.startTime == item.endTime)
+                {
+                    form.AddField("entry.1952479796", "0");
+                }
+                else
+                {
+                    TimeSpan timeSpan = item.endTime - item.startTime;
+                    form.AddField("entry.1952479796", timeSpan.ToString("hh\\:mm\\:ss"));
+                }
+                form.AddField("entry.778222421", item.isComplete ? "true" : "false");
+                UnityWebRequest www = UnityWebRequest.Post(url, form);
+                www.SendWebRequest();
+            }
+        }
+    }
+    void CompleteAllAnlyData(int notTotalGameSession){
+        foreach (AnlyData item in anlyDataList)
+        {
+            if (!item.isComplete && item.name != "GameLaunch")
+            {
+                item.isComplete = true;
+                item.endTime = DateTime.Now;
+            }
+        }
+        anlyDataList.Sort((x, y) => x.name.CompareTo(y.name));
+    }
+    void ClearAllData(int notTotalGameSession)
+    {
+        AnlyData temp = anlyDataList.Find(x => x.name == "GameLaunch");
+        anlyDataList.Clear();
+        id = 0;
+        temp.id = id++;
+        anlyDataList.Add(temp);
     }
 }
