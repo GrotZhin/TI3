@@ -13,12 +13,13 @@ public class Laser : MonoBehaviour
     [SerializeField] bool canReflectOnAnything = true;
    
     [SerializeField] HingeJoint hinge;
+    GM gm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class Laser : MonoBehaviour
                     if (rayHit.collider.CompareTag("goal"))
                     {
                         Porta();
+                        gm.puzzle3 = true;
                         break;
 
                     }
