@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: 6c0ab4ba6dd09444f8ed64d65feefd79, type: 2}
+  npcData: {fileID: 11400000, guid: e405a163e4094f845bd82defed5f46ae, type: 2}
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5
