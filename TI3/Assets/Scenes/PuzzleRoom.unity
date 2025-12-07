@@ -6315,7 +6315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999838
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6323,11 +6323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.005704741
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6339,12 +6339,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481105862991393804, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.654
       objectReference: {fileID: 0}
     - target: {fileID: 2828054478909954655, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: m_TagString
       value: Colectable
       objectReference: {fileID: 0}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f662c050d36b54e84dd8ea2ce512a5, type: 2}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: npcDataDefault
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f662c050d36b54e84dd8ea2ce512a5, type: 2}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: npcDataCompleted
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f662c050d36b54e84dd8ea2ce512a5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

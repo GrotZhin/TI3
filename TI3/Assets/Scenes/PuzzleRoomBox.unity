@@ -620,7 +620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: e405a163e4094f845bd82defed5f46ae, type: 2}
+  AllPuzzles: 0
+  npcDataDefault: {fileID: 11400000, guid: e405a163e4094f845bd82defed5f46ae, type: 2}
+  npcDataCompleted: {fileID: 11400000, guid: e405a163e4094f845bd82defed5f46ae, type: 2}
+  linkedPuzzle: 0
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5

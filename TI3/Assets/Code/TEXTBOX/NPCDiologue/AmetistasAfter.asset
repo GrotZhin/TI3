@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aa5dc11a6ebff44cb80520f422475c1, type: 3}
-  m_Name: Ametistas
+  m_Name: AmetistasAfter
   m_EditorClassIdentifier: 
   npcName: Amato
   nameColor: {r: 0.9306335, g: 0.4449537, b: 0.9528302, a: 1}
   textColor: {r: 0.5899548, g: 0.23638305, b: 0.6037736, a: 1}
   dialogueLines:
-  - Problemas, sempre com calma e serenidade que se resolve certo?
-  - "Estava quebrando a cabe\xE7a para resolver esse problema...."
-  - Mas na calma aparentemente achei um ajudante, certo?
-  - Acha que consegue me ajudar a resolver esse problema de luz?
-  - Eu precisava dessa ajuda para salvar a Hermatita....
+  - Obrigado por ter salvo a Hermatita ...
+  - "Como recompensa coloquei as informa\xE7\xF5es dela ali no lobby...."
+  - "obrigado pela paci\xEAncia..."
   npcVoice: {fileID: 11400000, guid: 314489701782fa7448acd9c0d8afc921, type: 2}

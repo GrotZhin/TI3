@@ -3,7 +3,19 @@ using System.Collections;
 
 public class NPCInteract : MonoBehaviour
 {
-    public NPCDialogueData npcData;
+    public enum PuzzleType { None, Puzzle1, Puzzle2, Puzzle3 }
+
+    [Header("Special Behaviour")]
+    public bool AllPuzzles = false;
+
+    [Header("Dialogues")]
+    public NPCDialogueData npcDataDefault;     
+    public NPCDialogueData npcDataCompleted;  
+
+    [Header("Which puzzle this NPC refers to")]
+    public PuzzleType linkedPuzzle = PuzzleType.None;
+
+    [Header("Interaction")]
     public float interactRadius = 2f;
     public KeyCode interactKey = KeyCode.E;
     private PlayerDialogueLook playerLook;
@@ -14,8 +26,6 @@ public class NPCInteract : MonoBehaviour
     private bool dialogueStarted = false;
 
     private Transform player;
-    private PlayerDialogueLook playerLooks;
-
 
     void Start()
     {
@@ -42,27 +52,51 @@ public class NPCInteract : MonoBehaviour
 
         if (dialogueStarted || (ChatBoxManager.Instance != null && ChatBoxManager.Instance.dialogueActive))
             return;
-        if (ChatBoxManager.Instance != null && ChatBoxManager.Instance.dialogueActive)
-            return;
 
         if (Input.GetKeyDown(interactKey))
-        {
-
             StartDialogue();
-        }
     }
 
     private void StartDialogue()
     {
-        ChatBoxManager.Instance.StartDialogue(npcData);
+        if (ChatBoxManager.Instance == null) return;
+
+        NPCDialogueData toUse = npcDataDefault;
+
+        if (AllPuzzles)
+        {
+            if (GM.instance.puzzle1 && GM.instance.puzzle2 && GM.instance.puzzle3)
+                toUse = npcDataCompleted;
+        }
+        else
+        {
+            switch (linkedPuzzle)
+            {
+                case PuzzleType.Puzzle1:
+                    if (GM.instance.puzzle1) toUse = npcDataCompleted;
+                    break;
+                case PuzzleType.Puzzle2:
+                    if (GM.instance.puzzle2) toUse = npcDataCompleted;
+                    break;
+                case PuzzleType.Puzzle3:
+                    if (GM.instance.puzzle3) toUse = npcDataCompleted;
+                    break;
+            }
+        }
+
+        ChatBoxManager.Instance.StartDialogue(toUse);
         GlobalKeyBlocker.BlockKeys = true;
         DialogueCameraController.Instance.ActivateDialogueCamera(transform);
+
         if (playerLook != null)
             playerLook.EnableDialogueLook(transform);
 
         ChatBoxManager.Instance.OnDialogueEnd += ResetDialogue;
         ChatBoxManager.Instance.OnDialogueEnd += DialogueCameraController.Instance.DeactivateDialogueCamera;
+
+        dialogueStarted = true;
     }
+
     private void ResetDialogue()
     {
         GlobalKeyBlocker.BlockKeys = false;
@@ -76,6 +110,7 @@ public class NPCInteract : MonoBehaviour
         ChatBoxManager.Instance.OnDialogueEnd -= ResetDialogue;
         ChatBoxManager.Instance.OnDialogueEnd -= DialogueCameraController.Instance.DeactivateDialogueCamera;
     }
+
     private IEnumerator DialogueCooldownRoutine()
     {
         dialogueCooldown = true;

@@ -7781,7 +7781,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: 694d2ef1e60d2f1469994fa62a4a2e21, type: 2}
+  AllPuzzles: 0
+  npcDataDefault: {fileID: 11400000, guid: 694d2ef1e60d2f1469994fa62a4a2e21, type: 2}
+  npcDataCompleted: {fileID: 11400000, guid: 8b4f52fa427bb654292a221dc5e437fa, type: 2}
+  linkedPuzzle: 3
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5
@@ -22659,7 +22662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: e0de98b2fe47c004687540f3bd64472f, type: 2}
+  AllPuzzles: 1
+  npcDataDefault: {fileID: 11400000, guid: e0de98b2fe47c004687540f3bd64472f, type: 2}
+  npcDataCompleted: {fileID: 11400000, guid: 6921b30d92c8e7e44b19745105bea1b7, type: 2}
+  linkedPuzzle: 0
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5
@@ -23494,7 +23500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: e0de98b2fe47c004687540f3bd64472f, type: 2}
+  AllPuzzles: 0
+  npcDataDefault: {fileID: 11400000, guid: 6c0ab4ba6dd09444f8ed64d65feefd79, type: 2}
+  npcDataCompleted: {fileID: 0}
+  linkedPuzzle: 0
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5
@@ -55168,7 +55177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0f97527227ca4cb5581207fbbaca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcData: {fileID: 11400000, guid: 6c0ab4ba6dd09444f8ed64d65feefd79, type: 2}
+  AllPuzzles: 0
+  npcDataDefault: {fileID: 11400000, guid: 6c0ab4ba6dd09444f8ed64d65feefd79, type: 2}
+  npcDataCompleted: {fileID: 11400000, guid: 3f908f0d724b84545be64f1ac8616c35, type: 2}
+  linkedPuzzle: 2
   interactRadius: 2
   interactKey: 101
   lookSpeed: 5
@@ -55247,6 +55259,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Colectable
       objectReference: {fileID: 0}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: linkedPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: npcDataDefault
+      value: 
+      objectReference: {fileID: 11400000, guid: f0b98d12a53f80a448b750c29be742ed, type: 2}
+    - target: {fileID: 3925309314208467415, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: npcDataCompleted
+      value: 
+      objectReference: {fileID: 11400000, guid: d1feed48c58db9d4fb303f6d9d5b2f24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55421,6 +55445,34 @@ PrefabInstance:
     - target: {fileID: 5879683016738457165, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000089462475
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0010398322
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9999619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.008665609
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544579227007032567, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.119
       objectReference: {fileID: 0}
     - target: {fileID: 8597605639239401544, guid: e4fe5297cd814d449abd48a662ecaf24, type: 3}
       propertyPath: m_Name

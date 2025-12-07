@@ -23,14 +23,14 @@ MonoBehaviour:
   - "Ent\xE3o, vamos supor que nesse incr\xEDvel museu, as coisas ganhem vida a noite
     ...."
   - "E vamos supor que sem querer algu\xE9m tenha nomeado as caixas erradas fazendo
-    os minerais e pedras ficasasem sem suas mem\xF3rias ...."
+    os minerais e pedras ficasasem presos ...."
   - Teria como me ajudar ... hehe !!
   - "VOC\xCA AJUDA ?!?!"
   - Muito obrigado !! Te garanto que vai sair daqui mais esperto !!!
-  - Mas relaxa, acho que conseguir essas memorias de novo vai ser tranquilo...
+  - Mas relaxa, acho que conseguir liberta-las, vai ser tranquilo...
   - "Para entrar na sala dos quebra cabe\xE7a, entre nas portas ao lado dos nossos
     mascotes queridos"
   - "Uma pena que eles s\xE3o encontrados APENAS a noite ... (aperte Q)"
-  - "AAAAAAA e mais uma coisa, voce pode interagir com as coisas coloridas dos quebra
-    cabe\xE7a (apertando E)"
-  npcVoice: {fileID: 0}
+  - AAAAAAA e mais uma coisa, voce pode interagir com os nossos macotes e com o mundo
+    hein. (Aperte E)
+  npcVoice: {fileID: 11400000, guid: 0d7596ca8aff1a34ca7e1f71e382a0c1, type: 2}
