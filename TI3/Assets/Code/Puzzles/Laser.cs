@@ -11,8 +11,9 @@ public class Laser : MonoBehaviour
     [SerializeField] float maxDistance = 300f;
     [SerializeField] int maxReflections = 5;
     [SerializeField] bool canReflectOnAnything = true;
+    [SerializeField] GameObject winPanel;
    
-    [SerializeField] HingeJoint hinge;
+   
     GM gm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,8 +44,9 @@ public class Laser : MonoBehaviour
                 {
                     if (rayHit.collider.CompareTag("goal"))
                     {
-                        Porta();
+                      
                         gm.puzzle3 = true;
+                        winPanel.SetActive(true);
                         break;
 
                     }
@@ -62,14 +64,5 @@ public class Laser : MonoBehaviour
         }
 
     }
-    void Porta()
-    {
-        var motor = hinge.motor;
-        motor.force = 100;
-        motor.targetVelocity = 90;
-        motor.freeSpin = false;
-        hinge.motor = motor;
-        hinge.useMotor = true;
-        
-    }
+    
 }

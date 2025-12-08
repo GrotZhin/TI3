@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Reflection;
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
+
 using UnityEngine;
 
 public class BoxPuzzle : MonoBehaviour
@@ -66,7 +66,7 @@ public class BoxPuzzle : MonoBehaviour
     [ContextMenu("Win")]
     void Win()
     {
-        Porta();
+       
         gm.puzzle2 = true;
         winPanel.SetActive(true);
 
@@ -128,17 +128,7 @@ public class BoxPuzzle : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         playerMove.move.Enable();
     }
-    void Porta()
-    {
-        var motor = hinge.motor;
-        motor.force = 100;
-        motor.targetVelocity = 90;
-        motor.freeSpin = false;
-        hinge.motor = motor;
-        hinge.useMotor = true;
-
-    }
-    void OnTriggerEnter(Collider other)
+       void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Drop"))
             drop = true;

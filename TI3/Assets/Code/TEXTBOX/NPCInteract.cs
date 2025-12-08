@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine.SceneManagement;
 
 public class NPCInteract : MonoBehaviour
 {
@@ -23,7 +25,9 @@ public class NPCInteract : MonoBehaviour
 
     private bool dialogueCooldown = false;
     public float cooldownTime = 0.2f;
+    public GameObject exclamation;
     private bool dialogueStarted = false;
+   
 
     private Transform player;
 
@@ -67,6 +71,7 @@ public class NPCInteract : MonoBehaviour
         {
             if (GM.instance.puzzle1 && GM.instance.puzzle2 && GM.instance.puzzle3)
                 toUse = npcDataCompleted;
+
         }
         else
         {
@@ -95,6 +100,7 @@ public class NPCInteract : MonoBehaviour
         ChatBoxManager.Instance.OnDialogueEnd += DialogueCameraController.Instance.DeactivateDialogueCamera;
 
         dialogueStarted = true;
+      
     }
 
     private void ResetDialogue()

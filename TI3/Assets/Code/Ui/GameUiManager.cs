@@ -40,7 +40,7 @@ public class GameUiManager : MonoBehaviour
     public float BtTopPosx = -555;
     public static GameUiManager gameUiManager;
 
-
+  public GameObject controls;
     [Header("Audio")]
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Slider sfx;
@@ -51,11 +51,11 @@ public class GameUiManager : MonoBehaviour
     void Start()
     {
 
-        Debug.Log("BOLEANA DIA E NOITE" + GM.DayTime);
+    
         Color startColor = Shader.GetGlobalColor("_ColorPallete"); DOTween.To(() => startColor, x => Shader.SetGlobalColor("_ColorPallete", x), Day, 0.5f).SetEase(Ease.InOutSine).SetUpdate(true);
         
         if (GM.firtsStart) SunAni();
-        
+     
         else
         {
             if (!GM.DayTime) SunAni();
@@ -225,5 +225,14 @@ public class GameUiManager : MonoBehaviour
         if (value == 0) temp = -60;
         audioMixer.SetFloat("musicVolume", temp);
     }
-
+ public void Controls()
+    {
+        controls.SetActive(true);
+        Back2Menu();
+    }
+    public void conback()
+    {
+        controls.SetActive(false);
+        OptionsMenuani();
+    }
 }

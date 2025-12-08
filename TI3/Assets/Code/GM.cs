@@ -7,7 +7,7 @@ public class GM : MonoBehaviour
     public int counterBox;
     public bool puzzle1 = false, puzzle2 = false, puzzle3 = false;
     public static GM instance;
-   
+    public bool firstTalk;
     public static bool DayTime;
     public static bool firtsStart = true;
     public static bool interacting = false;
@@ -16,10 +16,9 @@ public class GM : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "PuzzleRoomBox")
 
             counterBox = 0;
-
+     
        
-
-
+       
         if (instance == null)
         {
             instance = this;

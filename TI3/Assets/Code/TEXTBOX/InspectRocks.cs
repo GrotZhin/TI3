@@ -39,12 +39,14 @@ public class InspectRocks : MonoBehaviour
         {
             if (distance <= interactRadius && Input.GetKeyDown(interactKey))
             {
+                
                 OpenInspectMenu();
                 return;
             }
 
-            if (distance >interactRadius)
-                Rock.SetActive(false);
+            // if (distance >interactRadius)
+            //     Debug.Log("ta flikando aq");
+            //     Rock.SetActive(false);
 
             return;
         }

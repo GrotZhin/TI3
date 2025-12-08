@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+
 using UnityEngine;
-using UnityEngine.iOS;
+
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Scene = UnityEngine.SceneManagement.Scene;
