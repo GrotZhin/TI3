@@ -44,9 +44,11 @@ public class InspectRocks : MonoBehaviour
                 return;
             }
 
-            // if (distance >interactRadius)
-            //     Debug.Log("ta flikando aq");
-            //     Rock.SetActive(false);
+             if (distance > interactRadius)
+            {
+                Rock.SetActive(false);
+            }
+            //     Debug.Log("ta flikando aq");  
 
             return;
         }
