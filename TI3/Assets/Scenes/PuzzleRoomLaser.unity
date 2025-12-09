@@ -2928,6 +2928,7 @@ MonoBehaviour:
   maxDistance: 300
   maxReflections: 10
   canReflectOnAnything: 0
+  winPanel: {fileID: 0}
 --- !u!1 &637701852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5235,7 @@ MonoBehaviour:
   interactRadius: 2
   interactKey: 101
   playerTag: Player
-  Rock: {fileID: 1083024294}
+  Rock: {fileID: 0}
 --- !u!95 &1083024298
 Animator:
   serializedVersion: 7
@@ -5690,6 +5691,7 @@ MonoBehaviour:
   interactKey: 101
   lookSpeed: 5
   cooldownTime: 0.2
+  exclamation: {fileID: 0}
 --- !u!95 &1116811947
 Animator:
   serializedVersion: 7
@@ -9141,6 +9143,7 @@ MonoBehaviour:
   interactKey: 101
   lookSpeed: 5
   cooldownTime: 0.2
+  exclamation: {fileID: 0}
 --- !u!95 &1633349019
 Animator:
   serializedVersion: 7
@@ -12015,7 +12018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ani: {fileID: 2011713236}
-  Door: {fileID: 2011713230}
+  Blocker: {fileID: 0}
 --- !u!1001 &2012056593
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,6 +26,10 @@ public class InspectRocks : MonoBehaviour
         {
             player = playerObj.transform;
         }
+        else
+        {
+            Debug.LogWarning($"[InspectObject] Nenhum objeto com a tag '{playerTag}' foi encontrado na cena!");
+        }
     }
 
     void Update()
@@ -63,54 +67,43 @@ public class InspectRocks : MonoBehaviour
             }
         }
     }
-
     void OpenInspectMenu()
     {
-        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+        InspectUiManager manage = FindFirstObjectByType<InspectUiManager>();
 
-        if (manage != null)
+        if (manage == null)
         {
-            
-            manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
-            manage.OpenMenu();
-                    
-          
-            Debug.LogWarning($"[InspectObject] Nenhum objeto com a tag '{playerTag}' foi encontrado na cena!");
-       
-            manage.OnInspectClosed += ReleaseInspect;
+            Debug.LogError("[InspectObject] Nenhum InspectUiManager encontrado na cena!");
+            return;
+        }
 
-            inspectActive = true;
-            justOpened = true;
+        manage.SetTexts(rockMetalText, informativeHeader, informativeBody);
+        manage.OpenMenu();
 
-            cachedPlayerMovement = player.GetComponent<PlayerMove>();
-            if (cachedPlayerMovement != null)
-                cachedPlayerMovement.enabled = false;
-        }
-        if(InspectUiManager.inspactive == false)
-        {
-            Rock.SetActive(false);
-        }
-        else
-        {
-            Rock.SetActive(true);
-        }
+        manage.OnInspectClosed += ReleaseInspect;
+
+        inspectActive = true;
+
+        cachedPlayerMovement = player.GetComponent<PlayerMove>();
+        if (cachedPlayerMovement != null)
+            cachedPlayerMovement.enabled = false;
+
+        Rock.SetActive(true);
     }
-
     void CloseMenu()
     {
-        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+        InspectUiManager manage = FindFirstObjectByType<InspectUiManager>();
 
         if (manage != null)
         {
             manage.Back();
             manage.OnInspectClosed -= ReleaseInspect;
-
-            inspectActive = false;
-
-            cachedPlayerMovement = player.GetComponent<PlayerMove>();
-            if (cachedPlayerMovement != null)
-                cachedPlayerMovement.enabled = true;
         }
+
+        inspectActive = false;
+
+        if (cachedPlayerMovement != null)
+            cachedPlayerMovement.enabled = true;
     }
 
     public void ReleaseInspect()
@@ -122,7 +115,7 @@ public class InspectRocks : MonoBehaviour
 
         cachedPlayerMovement = null;
 
-        InspectUiManager manage = FindObjectOfType<InspectUiManager>();
+        InspectUiManager manage = FindFirstObjectByType<InspectUiManager>();
         if (manage != null)
             manage.OnInspectClosed -= ReleaseInspect;
             

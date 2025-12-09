@@ -915,6 +915,7 @@ MonoBehaviour:
   interactKey: 101
   lookSpeed: 5
   cooldownTime: 0.2
+  exclamation: {fileID: 0}
 --- !u!1 &281385569
 GameObject:
   m_ObjectHideFlags: 0
@@ -6431,7 +6432,7 @@ MonoBehaviour:
   interactRadius: 2
   interactKey: 101
   playerTag: Player
-  Rock: {fileID: 2065278709}
+  Rock: {fileID: 0}
 --- !u!1 &2067000791
 GameObject:
   m_ObjectHideFlags: 0

@@ -389,7 +389,7 @@ MonoBehaviour:
   interactRadius: 2
   interactKey: 101
   playerTag: Player
-  Rock: {fileID: 93388308}
+  Rock: {fileID: 0}
 --- !u!95 &93388312
 Animator:
   serializedVersion: 7

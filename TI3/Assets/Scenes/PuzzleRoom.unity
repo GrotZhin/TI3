@@ -7106,6 +7106,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227362319822185577, guid: 04a75195f3bdb8b46979951b8f82f92f, type: 3}
       propertyPath: rockMetalText
       value: ' Quartzo'
       objectReference: {fileID: 0}
